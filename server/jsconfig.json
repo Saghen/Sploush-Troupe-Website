@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "Root/*": ["./*"],
+      "Lib/*": ["./lib/*"],
+      "Logger": ["./lib/logger.js"],
+      "Bin/*": ["./bin/*"],
+      "Middleware/*": ["./middleware/*"],
+      "Routes/*": ["./routes/*"],
+      "Services/*": ["./services/*"],
+      "Helpers/*": ["./helpers/*"],
+      "Models/*": ["./models/*"],
+      "Config": ["./config/config.js"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,23 @@
+{
+  "env": "production",
+  "ip": "saghen.com",
+  "db": {
+    "host": "localhost",
+    "auth": {
+      "enabled": false
+    }
+  },
+  "logger": {
+    "handleExceptions": true,
+    "console": {
+      "enabled": true,
+      "level": "debug"
+    },
+    "file": {
+      "enabled": true,
+      "level": "error",
+      "filename": "production.log",
+      "json": true
+    }
+  }
+}

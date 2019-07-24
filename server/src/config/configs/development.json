@@ -1,0 +1,19 @@
+{
+  "env": "development",
+  "db": {
+    "name": "rust-simulator-dev",
+    "auth": {
+      "enabled": false
+    }
+  },
+  "logger": {
+    "handleExceptions": false,
+    "console": {
+      "enabled": true,
+      "level": "debug"
+    },
+    "file": {
+      "enabled": true
+    }
+  }
+}
