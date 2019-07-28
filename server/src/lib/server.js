@@ -3,7 +3,7 @@ const enableDestroy = require('server-destroy');
 const Koa = require('koa');
 const cors = require('@koa/cors');
 const respond = require('koa-respond');
-const bodyParser = require('koa-bodyparser');
+const koaBody = require('koa-body');
 const compress = require('koa-compress');
 
 const logger = require('Logger');
@@ -30,9 +30,11 @@ module.exports.createServer = async function createServer() {
   app
     .use(errorHandler)
     // Adds ctx.ok(), ctx.notFound(), etc..
-    .use(respond())
+    .use(respond({ statusMethods: {
+      conflict: 409
+    }}))
     .use(cors())
-    .use(bodyParser())
+    .use(koaBody({ multipart: true }))
     .use(requestLogger())
     // Load routes
     .use(require('Routes/').routes())

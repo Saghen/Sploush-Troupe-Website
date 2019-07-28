@@ -4,6 +4,9 @@ const path = require('path');
 
 const send = require('koa-send');
 
+const ImagesService = require('Services/images-service');
+const imagesClient = new ImagesService();
+
 const Router = require('koa-router');
 const router = Router();
 
@@ -11,28 +14,17 @@ router.prefix('/images');
 
 router.all('*', async (ctx, next) => {
   await next();
-  if (ctx.status === 404) ctx.notFound({ message: 'Image not found' });
+  if (ctx.status === 404) ctx.notFound('Image not found');
+});
+
+router.post('/insert', async ctx => {
+  await imagesClient.insert(ctx.request.files.image);
+
+  ctx.ok('Successfully uploaded image');
 });
 
 router.get('/:file', async (ctx, next) => {
-  const filename = ctx.params.file;
-  const extension = path.extname(filename);
-
-  // TODO: Remove old extension code if path works better
-  // const extension = (filename.match(/\.([^.]*?)(?=\?|#|$)/) || [])[1];
-
-  const folder = path.join(config.images.imagesPath, filename);
-
-  if (!(await fs.exists(folder))) return next();
-
-  let file;
-  if (ctx.query.size) {
-    // TODO: Check if path.extname returns the dot or not
-    file = path.join(folder, `${ctx.query.size}.${extension}`);
-    if (!(await fs.exists(file))) file = path.join(folder, `base.${extension}`);
-  } else file = path.join(folder, `base.${extension}`);
-
-  if (!(await fs.exists(file))) return next();
+  const file = await imagesClient.get({ filename: ctx.params.file, size: ctx.query.size})
 
   await send(ctx, file, { root: '/' });
 });
