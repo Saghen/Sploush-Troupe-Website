@@ -10,6 +10,8 @@ module.exports = class ImagesService {
   async insert(file) {
     BadRequest.assert(file, 'An image must be provided in the upload');
 
+    file.name = file.name.toLowerCase();
+
     const newPath = path.join(
       config.get('images').path,
       '../uploads',
@@ -29,19 +31,15 @@ module.exports = class ImagesService {
   async get({ filename, size }) {
     BadRequest.assert(filename, 'The filename must be provided');
 
-    const extension = path.extname({ filename, optimizedOnly: true });
+    const extension = path.extname(filename);
     const folder = path.join(config.get('images').path, filename);
 
-    if (!(await imageExists())) return next();
+    const exists = await imageExists({ filename, optimizedOnly: true })
+    NotFound.assert(exists, 'Image not found')
 
-    let file = path.join(folder, `base.${extension}`);
-
-    try {
-      if (size)
-        // TODO: Check if path.extname returns the dot or not
-        await fs.access(path.join(folder, `${size}.${extension}`));
-      file = path.join(folder, `${size}.${extension}`);
-    } catch (err) {}
+    let file;
+    if (size) file = path.join(folder, `${size}${extension}`);
+    else file = path.join(folder, `base${extension}`);
 
     try {
       await fs.access(file);
@@ -58,7 +56,7 @@ async function imageExists({ filename, optimizedOnly = false }) {
     return true;
   } catch (err) {}
 
-  if (optimizedOnly) {
+  if (!optimizedOnly) {
     try {
       await fs.access(
         path.join(config.get('images').path, '../uploads', filename)

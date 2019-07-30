@@ -20,8 +20,8 @@ const paths = {
 let watcher = gulp.watch(paths.uploads);
 watcher.on('all', async (event, file, stats) => {
   if (event == 'unlink') return;
-  let name = path.basename(file)
-  let ext = path.extname(file);
+  let name = path.basename(file).toLowerCase();
+  let ext = path.extname(file).toLowerCase();
 
   let { width, height } = size(file);
   let aspectRatio = width / height;
@@ -42,7 +42,7 @@ watcher.on('all', async (event, file, stats) => {
       let stream = gulp
         .src(file)
         .pipe(
-          imagemin([mozjpeg({ quality: 50 }), pngquant({ quality: [0.65, 0.8] })])
+          imagemin([mozjpeg({ quality: 80 }), pngquant({ quality: [0.65, 0.8] })])
         )
         .pipe(rename(`base${ext}`))
         .pipe(gulp.dest(path.join(paths.images, name)));

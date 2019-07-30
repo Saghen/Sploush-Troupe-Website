@@ -24,9 +24,9 @@ router.post('/insert', async ctx => {
 });
 
 router.get('/:file', async (ctx, next) => {
-  const file = await imagesClient.get({ filename: ctx.params.file, size: ctx.query.size})
+  const path = await imagesClient.get({ filename: ctx.params.file, size: ctx.query.size})
 
-  await send(ctx, file, { root: '/' });
+  await send(ctx, path, { root: '/' });
 });
 
 module.exports = router;
