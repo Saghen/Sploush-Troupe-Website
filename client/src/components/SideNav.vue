@@ -17,9 +17,11 @@
         <font-awesome-icon :icon="['fab', 'twitch']"></font-awesome-icon>
         <span>Streamers</span>
       </router-link>
-      <div id="logo">
-        <img src="//localhost:8080/images/logo.png?size=256" alt />
-      </div>
+      <router-link to="/">
+        <div id="logo">
+          <image-component image="logo.png" size="256"></image-component>
+        </div>
+      </router-link>
       <router-link to="/applications">
         <font-awesome-icon icon="paper-plane"></font-awesome-icon>
         <span>Applications</span>
@@ -40,6 +42,7 @@
 </template>
 
 <script>
+import ImageComponent from "./core/Image.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faHome,
@@ -65,7 +68,8 @@ library.add(
 export default {
   name: "side-nav",
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    ImageComponent
   }
 };
 </script>
@@ -78,7 +82,6 @@ nav {
   background-color: $dark;
   border-left: 2px solid $accent;
   border-right: 2px solid $accent;
-  padding: 0 32px;
   height: 100vh;
 
   > div {
@@ -97,6 +100,7 @@ nav a {
   font-family: $header-font;
   color: $text;
   font-size: 1.2em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   transition: 0.2s color;
   display: flex;

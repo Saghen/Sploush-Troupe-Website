@@ -1,11 +1,11 @@
 <template>
   <div id="home">
-    <container header="Merchandise">
+    <container header="Merchandise" wrap="true">
       <store-card url="temp-url" image="store1menu.png"></store-card>
       <store-card url="temp-url" image="store2menu.png"></store-card>
       <store-card url="temp-url" image="store3menu.png"></store-card>
     </container>
-    <container header="Teams">
+    <container header="Teams" wrap="true">
       <team-card url="temp-url" image="fortniteteamlogo.png"></team-card>
       <team-card url="temp-url" image="csgoteamlogo.png"></team-card>
       <team-card url="temp-url" image="dota2teamlogo.png"></team-card>

@@ -1,11 +1,37 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <div id="primary-view">
+      <header-nav id="header-nav"></header-nav>
+      <side-nav id="side-nav"></side-nav>
+      <div>
+        <div id="router-view">
+          <router-view />
+        </div>
+        <footer-nav></footer-nav>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import config from "./config";
+
+import SideNav from "@/components/SideNav.vue";
+import HeaderNav from "@/components/HeaderNav.vue";
+import FooterNav from "@/components/FooterNav.vue";
+
+export default {
+  mounted() {
+    document.querySelector(
+      "#app"
+    ).style.backgroundImage = `url(//${config.api.domain}${config.images.path}/homebg.jpg)`;
+  },
+  components: {
+    SideNav,
+    HeaderNav,
+    FooterNav
+  }
+};
 </script>
 
 
@@ -21,20 +47,21 @@ export default {};
 body {
   font-family: $primary-font;
   color: $text;
-  background-image: url("//localhost:8080/images/homebg.jpg");
   background-size: cover;
   overflow: hidden;
 }
 
 #app {
   overflow-y: scroll;
-  transform: translateZ();
+  transform: translateZ(0);
   width: 100vw;
   height: 100vh;
   position: relative;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: $header-font;
   letter-spacing: 0.06em;
   font-weight: normal;
@@ -42,5 +69,49 @@ h1, h2, h3 {
 
 .content {
   line-height: 1.4em;
+}
+
+#primary-view {
+  display: grid;
+  grid-template-columns: 240px auto;
+  max-width: 1600px;
+  width: 100%;
+  margin: auto;
+}
+
+#header-nav {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+
+#side-nav {
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+#router-view {
+  box-sizing: border-box;
+  padding: 16px;
+  transform: translateZ(0);
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  #primary-view {
+    display: block;
+  }
+
+  #header-nav {
+    display: block;
+  }
+
+  #side-nav {
+    display: none;
+  }
 }
 </style>

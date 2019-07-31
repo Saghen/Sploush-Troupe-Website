@@ -10,7 +10,7 @@ export default {
   props: ["image", "size", 'width', 'height'],
   computed: {
     url() {
-      let url = `//${config.domain}${config.images.path}/${this.image}`;
+      let url = `//${config.api.domain}${config.images.path}/${this.image}`;
       if (this.size) url += `?size=${this.size}`;
 
       return url;

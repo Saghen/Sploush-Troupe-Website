@@ -1,9 +1,13 @@
 export default {
   env: 'development',
   ssl: false,
-  domain: "localhost:8080",
+  apiDomain: "saghen.com",
   auth: {
     enabled: true
+  },
+  api: {
+    ssl: false,
+    domain: 'api.saghen.com'
   },
   images: {
     path: "/images"

@@ -43,6 +43,7 @@ a > span {
   left: 0;
   right: 0;
   text-decoration: underline;
+  text-align: center;
 }
 </style>
 
