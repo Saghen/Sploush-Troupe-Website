@@ -9,7 +9,7 @@ Vue.config.productionTip = false;
 import config from './config';
 
 Vue.prototype.$http = axios.create({
-  baseURL: `${config.ssl ? 'https://' : 'http://'}${config.domain}`,
+  baseURL: `${config.ssl ? 'https://' : 'http://'}${config.apiDomain}`,
   json: true
 });
 

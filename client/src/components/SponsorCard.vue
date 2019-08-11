@@ -1,8 +1,8 @@
 <template>
-  <a :href="url" class="news-card" :class="{ 'alt-color': altColor }">
-    <image-component :image="image" size="512" width="400" height="280"></image-component>
-    <h3 class="title">{{ title }}</h3>
-    <p class="content">{{ content }}</p>
+  <a :href="url" class="sponsor-card" :class="{ 'alt-color': altColor }">
+    <image-component :image="banner" size="512" width="500"></image-component>
+    <span class="content">{{ content }}</span>
+    <image-component :image="image" size="512" width="500" height="280"></image-component>
   </a>
 </template>
 
@@ -10,8 +10,8 @@
 import ImageComponent from "./core/Image.vue";
 
 export default {
-  name: "news-card",
-  props: ["url", "image", "title", "content", "altColor"],
+  name: "sponsor-card",
+  props: ["url", "banner", "image", "title", "content", "altColor"],
   components: {
     ImageComponent
   }
@@ -21,8 +21,8 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_global.scss";
 
-.news-card {
-  width: 400px;
+.sponsor-card {
+  width: 500px;
   display: flex;
   flex-direction: column;
   color: $accent;

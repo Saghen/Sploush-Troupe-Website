@@ -20,6 +20,18 @@ export default new Router({
         import(/* webpackChunkName: "view-about" */ `@/views/About.vue`)
     },
     {
+      path: "/applications",
+      name: "applications",
+      component: () =>
+        import(/* webpackChunkName: "view-about" */ `@/views/Applications.vue`)
+    },
+    {
+      path: "/applications/:listing",
+      name: "job-listing",
+      component: () =>
+        import(/* webpackChunkName: "view-about" */ `@/views/JobListing.vue`)
+    },
+    {
       path: "/news",
       name: "news",
       component: () =>

@@ -1,20 +1,17 @@
 <template>
-  <div id="sponsors">
-    <container header="Sponsors">
-      <sponsor-card banner="footersponsor1.png" image="sponsor1large.jpg"></sponsor-card>
-      <sponsor-card banner="footersponsor2.png" image="sponsor2large.jpg"></sponsor-card>
+  <div id="job-listing">
+    <container :header="listing.title" column="true">
+      <div></div>
     </container>
   </div>
 </template>
 
 <script>
 import Container from "../components/core/Container";
-import SponsorCard from "../components/SponsorCard";
 
 export default {
-  name: "sponsors",
+  name: "job-listing",
   components: {
-    SponsorCard,
     Container
   },
   data() {
@@ -32,4 +29,28 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_global.scss";
+
+#job-listing {
+  max-width: 900px;
+  margin: auto;
+}
+
+.link,
+.title {
+  display: block;
+  position: relative;
+  color: $text;
+  font-family: $header-font;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+}
+
+.link {
+  font-size: 1.2em;
+  align-self: flex-end;
+}
+
+.title {
+  font-size: 2em;
+}
 </style>

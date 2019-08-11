@@ -31,8 +31,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_global.scss";
 
+footer {
+  margin-top: auto;
+}
+
 #footer {
-  background: $dark;
   padding: 16px;
   display: flex;
   justify-content: space-around;

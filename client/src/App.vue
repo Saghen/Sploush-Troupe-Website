@@ -39,6 +39,8 @@ export default {
 @import "@/styles/_normalize.scss";
 @import "@/styles/_global.scss";
 
+/* Global Stuff */
+
 @font-face {
   font-family: Bebas;
   src: url("./assets/bebas.otf") format("opentype");
@@ -67,6 +69,25 @@ h3 {
   font-weight: normal;
 }
 
+p {
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lighten($dark, 10);
+}
+
+/* Layout */
+
 .content {
   line-height: 1.4em;
 }
@@ -77,6 +98,11 @@ h3 {
   max-width: 1600px;
   width: 100%;
   margin: auto;
+}
+
+#primary-view > div {
+  display: flex;
+  flex-direction: column;
 }
 
 #header-nav {
