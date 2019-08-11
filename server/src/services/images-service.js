@@ -2,15 +2,23 @@ const { BadRequest, Conflict, NotFound } = require('fejl');
 
 const config = require('Config');
 const fs = require('fs').promises;
+const pathExists = require('path-exists');
 const path = require('path');
 
-const send = require('koa-send');
+const validExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
 
 module.exports = class ImagesService {
-  async insert(file) {
+  async insert(file, filename) {
     BadRequest.assert(file, 'An image must be provided in the upload');
+    file.name = filename || file.name.toLowerCase();
+    const extension = path.extname(file.name);
 
-    file.name = file.name.toLowerCase();
+    BadRequest.assert(
+      validExtensions.includes(extension),
+      `The file must be one of the following extensions: ${validExtensions.join(
+        ', '
+      )}`
+    );
 
     const newPath = path.join(
       config.get('images').path,
@@ -18,14 +26,14 @@ module.exports = class ImagesService {
       file.name
     );
 
-    if (await imageExists({ filename: file.name }))
-      return ctx.conflict('File already exists');
+    Conflict.assert(
+      !(await imageExists({ filename: file.name })),
+      'File already exists'
+    );
 
     const fileBuffer = await fs.readFile(file.path);
     await fs.writeFile(newPath, fileBuffer);
     await fs.unlink(file.path);
-
-    ctx.ok('Successfully uploaded image');
   }
 
   async get({ filename, size }) {
@@ -34,36 +42,34 @@ module.exports = class ImagesService {
     const extension = path.extname(filename);
     const folder = path.join(config.get('images').path, filename);
 
-    const exists = await imageExists({ filename, optimizedOnly: true })
-    NotFound.assert(exists, 'Image not found')
+    const exists = await imageExists({ filename, optimizedOnly: true });
+    NotFound.assert(exists, 'Image not found');
 
-    let file;
+    const baseFile = path.join(folder, `base${extension}`);
+    let file = baseFile;
     if (size) file = path.join(folder, `${size}${extension}`);
-    else file = path.join(folder, `base${extension}`);
 
-    try {
-      await fs.access(file);
-      return file;
-    } catch (err) {
-      NotFound.assert(false, 'Image not found');
-    }
+    if (await pathExists(file)) return file;
+    if (await pathExists(baseFile)) return baseFile;
+
+    NotFound.assert(false, 'Image not found');
+  }
+
+  async list() {
+    const files = await fs.readdir(config.get('images').path);
+    return files;
   }
 };
 
 async function imageExists({ filename, optimizedOnly = false }) {
-  try {
-    await fs.access(path.join(config.get('images').path, filename));
-    return true;
-  } catch (err) {}
+  let exists = await pathExists(path.join(config.get('images').path, filename));
 
-  if (!optimizedOnly) {
-    try {
-      await fs.access(
+  if (!optimizedOnly)
+    exists =
+      exists ||
+      (await pathExists(
         path.join(config.get('images').path, '../uploads', filename)
-      );
-      return true;
-    } catch (err) {}
-  }
+      ));
 
-  return false;
+  return exists;
 }

@@ -1,6 +1,4 @@
-const config = require('Config');
-const fs = require('fs').promises;
-const path = require('path');
+const { BadRequest } = require('fejl');
 
 const send = require('koa-send');
 
@@ -18,13 +16,27 @@ router.all('*', async (ctx, next) => {
 });
 
 router.post('/insert', async ctx => {
-  await imagesClient.insert(ctx.request.files.image);
+  BadRequest.assert(
+    ctx.request.files && ctx.request.files.image,
+    'An image must be provided'
+  );
+
+  const filename = ctx.request.body && ctx.request.body.filename;
+
+  await imagesClient.insert(ctx.request.files.image, filename);
 
   ctx.ok('Successfully uploaded image');
 });
 
+router.get('/list', async ctx => {
+  ctx.ok(await imagesClient.list());
+});
+
 router.get('/:file', async (ctx, next) => {
-  const path = await imagesClient.get({ filename: ctx.params.file, size: ctx.query.size})
+  const path = await imagesClient.get({
+    filename: ctx.params.file,
+    size: ctx.query.size
+  });
 
   await send(ctx, path, { root: '/' });
 });
