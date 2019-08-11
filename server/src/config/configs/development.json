@@ -1,5 +1,6 @@
 {
   "env": "development",
+  "port": 80,
   "db": {
     "name": "rust-simulator-dev",
     "auth": {
