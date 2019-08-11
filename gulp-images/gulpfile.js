@@ -9,8 +9,6 @@ const sharp = require('sharp');
 const through2 = require('through2');
 
 const path = require('path');
-const fs = require('fs');
-const util = require('util');
 
 const paths = {
   images: 'images/',
