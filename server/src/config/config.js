@@ -14,7 +14,8 @@ const config = convict({
     default: false
   },
   domain: {
-    doc: 'The domain that the node or nginx server is hosted on <-- not the port of the node server',
+    doc:
+      'The domain that the node or nginx server is hosted on <-- not the port of the node server',
     type: String,
     default: 'localhost:8080'
   },
@@ -48,7 +49,7 @@ const config = convict({
     name: {
       doc: 'Database name',
       format: String,
-      default: 'rust-simulator'
+      default: 'sploush-troupe'
     },
     port: {
       doc: 'Database port',
@@ -104,7 +105,8 @@ const config = convict({
         default: 'debug'
       },
       path: {
-        doc: 'Relative path from the root of the server folder to the log folder',
+        doc:
+          'Relative path from the root of the server folder to the log folder',
         format: String,
         default: 'log'
       },
@@ -127,7 +129,24 @@ const config = convict({
     path: {
       doc: 'The path to the optimized image folders',
       format: String,
-      default: path.join(__rootdir, '../gulp-images/images')
+      default: path.join(global.__rootdir, '../gulp-images/images')
+    }
+  },
+  twitch: {
+    clientId: {
+      doc: 'Client Id for Twitch API',
+      format: String,
+      default: ''
+    },
+    clientSecret: {
+      doc: 'Client Secret for Twitch API',
+      format: String,
+      default: ''
+    },
+    cacheTTL: {
+      doc: 'Timeout for cached items',
+      format: Number,
+      default: 60 * 15 // Timeout for cached twitch info
     }
   }
 });

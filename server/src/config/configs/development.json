@@ -1,8 +1,8 @@
 {
   "env": "development",
-  "port": 80,
+  "port": 8081,
   "db": {
-    "name": "rust-simulator-dev",
+    "name": "sploush-troupe-dev",
     "auth": {
       "enabled": false
     }
