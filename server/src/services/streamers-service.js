@@ -11,13 +11,41 @@ module.exports = class TeamsService {
     BadRequest.assert(id, 'An id must be provided');
     assertInvalidId(isObjectId(id));
 
-    const streamer = await streamersClient.get(id);
+    let streamer = await streamersClient.get(id);
+    streamer = {
+      ...streamer.toObject(),
+      twitchProfile: await streamer.getTwitchProfile()
+    };
+
     NotFound.assert(streamer, 'Streamer not found');
     return streamer;
   }
 
   async list() {
-    return streamersClient.list();
+    let streamers = await streamersClient.list();
+
+    const promises = [];
+    for (let i = 0; i < streamers.length; i++) {
+      const index = i; // because closures and stuff
+      if (await streamers[i].getTwitchProfileCache())
+        streamers[i] = {
+          ...streamers[i].toObject(),
+          twitchProfile: await streamers[i].getTwitchProfileCache()
+        };
+      else
+        promises.push(
+          streamers[index].getTwitchProfile().then(
+            val =>
+              (streamers[index] = {
+                ...streamers[index].toObject(),
+                twitchProfile: val
+              })
+          )
+        );
+    }
+    await Promise.all(promises);
+
+    return streamers;
   }
 
   async insert({ name, description, youtubeId, twitterHandle, twitchId }) {
