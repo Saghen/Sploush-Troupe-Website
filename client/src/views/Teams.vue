@@ -1,8 +1,6 @@
 <template>
   <container header="Teams">
-    <team-card url="temp-url" image="fortniteteamlogo.png"></team-card>
-    <team-card url="temp-url" image="csgoteamlogo.png"></team-card>
-    <team-card url="temp-url" image="dota2teamlogo.png"></team-card>
+    <team-card v-for="team in teams" :key="team._id" :team="team" />
   </container>
 </template>
 
@@ -15,6 +13,16 @@ export default {
   components: {
     TeamCard,
     Container
+  },
+  data() {
+    return {
+      teams: []
+    };
+  },
+  created() {
+    this.$http.get("/teams/list").then(data => {
+      this.teams = data.data;
+    });
   }
 };
 </script>

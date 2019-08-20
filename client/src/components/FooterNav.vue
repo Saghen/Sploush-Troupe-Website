@@ -33,6 +33,7 @@ export default {
 
 footer {
   margin-top: auto;
+  transform: translateZ(0);
 }
 
 #footer {
