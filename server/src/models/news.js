@@ -5,16 +5,13 @@ const NewsSchema = new Schema({
   image: String,
   bannerImage: String,
   title: String,
-  descriptions: String,
+  description: String,
   content: String
 });
 
 for (let attribute in NewsSchema.paths) {
-  if (attribute.isRequired === undefined) {
-    if (typeof attribute === 'string')
-      attribute = { type: attribute, isRequired: true };
-    else attribute.isRequried = true;
-  }
+  if (NewsSchema.paths[attribute].isRequired === undefined)
+    NewsSchema.paths[attribute].required(true);
 }
 
 const News = model('News', NewsSchema);

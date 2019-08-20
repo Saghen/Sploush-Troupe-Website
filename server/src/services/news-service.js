@@ -1,15 +1,15 @@
 const { BadRequest, Conflict, NotFound } = require('fejl');
 const newsClient = new (require('Services/db/news-db'))();
-const { urlIsValid } = require('Helpers/validators');
+const { urlIsValid, isObjectId } = require('Helpers/validators');
 
 const assertInvalidUrl = BadRequest.makeAssert('Invalid URL Provided');
 
 module.exports = class NewsService {
-  async get(url) {
-    BadRequest.assert(url, 'A url must be provided');
-    assertInvalidUrl(urlIsValid(url));
+  async get({ url, id }) {
+    BadRequest.assert(url || id, 'A url or id must be provided');
+    if (url) assertInvalidUrl(urlIsValid(url));
 
-    const newsItem = await newsClient.get(url);
+    const newsItem = await newsClient.get({ url, id });
     NotFound.assert(newsItem, 'News item not found');
     return newsItem;
   }
@@ -20,28 +20,41 @@ module.exports = class NewsService {
 
   async insert(data) {
     Conflict.assert(
-      !(await newsClient.get(data.url)),
+      !(await newsClient.get({ url: data.url })),
       'A news item already has the provided url'
     );
     assertInvalidUrl(urlIsValid(data.url));
-    return newsClient.insert(data);
+
+    try {
+      await newsClient.insert(data);
+    } catch (err) {
+      BadRequest.assert(false, err.message);
+    }
   }
 
-  async update(oldUrl, data) {
-    Conflict.assert(
-      !(await newsClient.get(data.url)),
-      'A news item already has the provided url'
-    );
-    assertInvalidUrl(urlIsValid(oldUrl));
+  async update(id, data) {
+    if (data.url) {
+      const conflictingNewsItem = await newsClient.get({ url: data.url });
+      Conflict.assert(
+        !conflictingNewsItem || conflictingNewsItem._id.toString() === id,
+        'A news item already has the provided url'
+      );
+    }
+
+    BadRequest.assert(isObjectId(id), 'A valid object ID must be provided');
 
     // TODO: Check if failed
 
-    return newsClient.update(oldUrl, data);
+    try {
+      await newsClient.update(id, data);
+    } catch (err) {
+      BadRequest.assert(false, err.message);
+    }
   }
 
-  async delete(url) {
-    assertInvalidUrl(urlIsValid(url));
-    const newsItem = await newsClient.delete(url);
+  async delete(id) {
+    BadRequest.assert(isObjectId(id), 'A valid object ID must be provided');
+    const newsItem = await newsClient.delete(id);
     NotFound.assert(newsItem, 'News item not found');
     return newsItem;
   }

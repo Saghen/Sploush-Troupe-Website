@@ -6,7 +6,7 @@ const router = new Router();
 router.prefix('/news');
 
 router.get('/get', async ctx => {
-  ctx.ok(await newsClient.get(ctx.query.url));
+  ctx.ok(await newsClient.get(ctx.query));
 });
 
 router.get('/list', async ctx => {
@@ -21,12 +21,12 @@ router.post('/insert', async ctx => {
 
 router.post('/update', async ctx => {
   const body = ctx.request.body;
-  const newsItem = await newsClient.update(body.oldUrl, body);
+  const newsItem = await newsClient.update(body.id, { ...body, id: undefined });
   ctx.ok(newsItem);
 });
 
-router.delete('/delete', async ctx => {
-  ctx.ok(await newsClient.delete(ctx.query.url));
+router.post('/delete', async ctx => {
+  ctx.ok(await newsClient.delete(ctx.request.body.id));
 });
 
 module.exports = router;
