@@ -4,7 +4,6 @@ const Koa = require('koa');
 const cors = require('@koa/cors');
 const respond = require('koa-respond');
 const koaBody = require('koa-body');
-const compress = require('koa-compress');
 
 const logger = require('Logger');
 const notFoundHandler = require('Middleware/not-found');
@@ -23,16 +22,20 @@ const mongoose = require('mongoose');
 module.exports.createServer = async function createServer() {
   logger.info('Creating server...');
 
-  const db = await mongo();
+  await mongo();
 
   const app = new Koa();
 
   app
     .use(errorHandler)
     // Adds ctx.ok(), ctx.notFound(), etc..
-    .use(respond({ statusMethods: {
-      conflict: 409
-    }}))
+    .use(
+      respond({
+        statusMethods: {
+          conflict: 409
+        }
+      })
+    )
     .use(cors())
     .use(koaBody({ multipart: true }))
     .use(requestLogger())
