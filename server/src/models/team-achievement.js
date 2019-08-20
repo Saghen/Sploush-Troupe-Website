@@ -9,11 +9,8 @@ const TeamAchievementSchema = new Schema({
 });
 
 for (let attribute in TeamAchievementSchema.paths) {
-  if (attribute.isRequired === undefined) {
-    if (typeof attribute === 'string')
-      attribute = { type: attribute, isRequired: true };
-    else attribute.isRequried = true;
-  }
+  if (TeamAchievementSchema.paths[attribute].isRequired === undefined)
+    TeamAchievementSchema.paths[attribute].required(true);
 }
 
 const TeamAchievement = model('TeamAchievement', TeamAchievementSchema);

@@ -11,13 +11,9 @@ const TeamSchema = new Schema({
 });
 
 for (let attribute in TeamSchema.paths) {
-  if (attribute.isRequired === undefined) {
-    if (typeof attribute === 'string')
-      attribute = { type: attribute, isRequired: true };
-    else attribute.isRequried = true;
-  }
+  if (TeamSchema.paths[attribute].isRequired === undefined)
+    TeamSchema.paths[attribute].required(true);
 }
-
 const Team = model('Team', TeamSchema);
 
 module.exports = Team;

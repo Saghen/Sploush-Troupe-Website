@@ -7,11 +7,8 @@ const TeamMemberSchema = new Schema({
 });
 
 for (let attribute in TeamMemberSchema.paths) {
-  if (attribute.isRequired === undefined) {
-    if (typeof attribute === 'string')
-      attribute = { type: attribute, isRequired: true };
-    else attribute.isRequried = true;
-  }
+  if (TeamMemberSchema.paths[attribute].isRequired === undefined)
+    TeamMemberSchema.paths[attribute].required(true);
 }
 
 const TeamMember = model('TeamMember', TeamMemberSchema);
