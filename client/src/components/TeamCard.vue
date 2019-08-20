@@ -1,8 +1,8 @@
 <template>
-  <a :href="url">
-    <image-component :image="image" size="512"></image-component>
+  <router-link :to="/\//.test(team.url) ? team.url : `/teams/${team.url}`">
+    <image-component :image="team.image" size="512"></image-component>
     <span>VIEW TEAM</span>
-  </a>
+  </router-link>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ import ImageComponent from './core/Image.vue';
 
 export default {
   name: 'team-card',
-  props: ['url', 'image'],
+  props: ['team'],
   components: {
     ImageComponent
   }

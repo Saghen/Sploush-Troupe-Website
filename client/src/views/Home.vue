@@ -6,44 +6,10 @@
       <store-card url="temp-url" image="store3menu.png"></store-card>
     </container>
     <container header="Teams" wrap="true">
-      <team-card url="temp-url" image="fortniteteamlogo.png"></team-card>
-      <team-card url="temp-url" image="csgoteamlogo.png"></team-card>
-      <team-card url="temp-url" image="dota2teamlogo.png"></team-card>
+      <team-card v-for="team in teams" :key="team._id" :team="team"></team-card>
     </container>
     <container header="Recent News" wrap="true">
-      <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-      <news-card
-        url="temp-url"
-        :title="newsTitle"
-        :content="newsContent"
-        image="dreamhack.jpg"
-        altColor="true"
-      ></news-card>
-      <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-      <news-card
-        url="temp-url"
-        :title="newsTitle"
-        :content="newsContent"
-        image="dreamhack.jpg"
-        altColor="true"
-      ></news-card>
-      <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-      <news-card
-        url="temp-url"
-        :title="newsTitle"
-        :content="newsContent"
-        image="dreamhack.jpg"
-        altColor="true"
-      ></news-card>
-      <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-      <news-card
-        url="temp-url"
-        :title="newsTitle"
-        :content="newsContent"
-        image="dreamhack.jpg"
-        altColor="true"
-      ></news-card>
-      <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
+      <news-card v-for="(item, index) in news" :item="item" :key="item._id" :altColor="index % 2 === 1"></news-card>
     </container>
   </div>
 </template>
@@ -64,10 +30,17 @@ export default {
   },
   data() {
     return {
-      newsTitle: "Title of Recent News",
-      newsContent:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+      news: [],
+      teams: []
     };
+  },
+  created() {
+    this.$http.get('/news/list').then(data => {
+      this.news = data.data
+    })
+    this.$http.get('/teams/list').then(data => {
+      this.teams = data.data
+    })
   }
 };
 </script>

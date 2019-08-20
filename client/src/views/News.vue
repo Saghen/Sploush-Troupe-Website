@@ -1,38 +1,6 @@
 <template>
   <container header="News" wrap="true">
-    <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-    <news-card
-      url="temp-url"
-      :title="newsTitle"
-      :content="newsContent"
-      image="dreamhack.jpg"
-      altColor="true"
-    ></news-card>
-    <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-    <news-card
-      url="temp-url"
-      :title="newsTitle"
-      :content="newsContent"
-      image="dreamhack.jpg"
-      altColor="true"
-    ></news-card>
-    <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-    <news-card
-      url="temp-url"
-      :title="newsTitle"
-      :content="newsContent"
-      image="dreamhack.jpg"
-      altColor="true"
-    ></news-card>
-    <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
-    <news-card
-      url="temp-url"
-      :title="newsTitle"
-      :content="newsContent"
-      image="dreamhack.jpg"
-      altColor="true"
-    ></news-card>
-    <news-card url="temp-url" :title="newsTitle" :content="newsContent" image="dreamhack2.jpg"></news-card>
+    <news-card v-for="(item, index) in news" :item="item" :key="item._id" :altColor="index % 2 === 1"></news-card>
   </container>
 </template>
 
@@ -48,10 +16,13 @@ export default {
   },
   data() {
     return {
-      newsTitle: "Title of Recent News",
-      newsContent:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+      news: []
     };
+  },
+  created() {
+    this.$http.get("/news/list").then(data => {
+      this.news = data.data;
+    });
   }
 };
 </script>

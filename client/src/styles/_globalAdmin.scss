@@ -1,0 +1,48 @@
+$accent: #7cf5fe;
+$accent-alt: #8c3ccf;
+$background: #fff;
+$text: #000;
+$dark: #191727;
+
+$primary-font: Arial, Helvetica, sans-serif;
+$header-font: "Bebas", Impact, sans-serif;
+
+.button {
+  background-color: $accent-alt;
+  display: inline-block;
+  color: #fff;
+  padding: 15px 20px;
+  transition: all 0.3s;
+  border: 2px solid $accent-alt;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: transparent;
+    color: $accent-alt;
+  }
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 8px;
+  outline: none;
+  cursor: text;
+
+  &:focus {
+    border-color: $accent-alt;
+  }
+}
+
+.seperator {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 40px;
+  height: 24px;
+
+  &::before {
+    content: url(/icons/dots.svg);
+  }
+}

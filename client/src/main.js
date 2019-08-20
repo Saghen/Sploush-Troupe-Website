@@ -9,9 +9,38 @@ Vue.config.productionTip = false;
 import config from './config';
 
 Vue.prototype.$http = axios.create({
-  baseURL: `${config.ssl ? 'https://' : 'http://'}${config.apiDomain}`,
+  baseURL: `${config.api.ssl ? 'https://' : 'http://'}${config.api.domain}`,
   json: true
 });
+
+// Toast
+import Toasted from "vue-toasted";
+
+Vue.use(Toasted);
+Vue.prototype.$sendToast = function(text, opts) {
+  const defaultOpts = {
+    type: "success",
+    duration: 4000
+  };
+
+  if (typeof opts !== "object") opts = {};
+
+  opts = {
+    ...defaultOpts,
+    ...opts
+  };
+
+  this.$toasted.show(text, opts);
+};
+
+Vue.prototype.$sendToastError = function(text, opts) {
+  if (typeof opts !== "object") opts = {};
+
+  opts.type = "error";
+  opts.duration = 10000;
+
+  this.$sendToast(text, opts);
+};
 
 new Vue({
   router,

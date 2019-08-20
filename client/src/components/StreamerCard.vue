@@ -1,16 +1,26 @@
 <template>
-  <a :href="url" class="streamer-card" :class="{ 'alt-color': altColor, offline: !isOnline }">
-    <image-component :image="image" size="512" width="400" height="280"></image-component>
+  <router-link
+    :to="streamer.url || `/streamers/${streamer.twitchId}`"
+    class="streamer-card"
+    :class="{ 'alt-color': altColor, offline: !isOnline }"
+  >
+    <image-component :image="imageUrl" width="400" height="225" />
     <div class="title-container">
-      <h3 class="title">{{ title }}</h3>
+      <h3 class="title">{{ streamer.name }}</h3>
       <span class="streamer-status" :class="{ online: isOnline, offline: !isOnline }">
-        <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="margin-right: 8px;">
+        <svg
+          viewBox="0 0 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          style="margin-right: 8px;"
+        >
           <circle cx="9" cy="9" r="9" />
         </svg>
       </span>
     </div>
-    <span class="content">{{ content }}</span>
-  </a>
+    <span class="content" v-html="streamer.description"></span>
+  </router-link>
 </template>
 
 <script>
@@ -18,14 +28,23 @@ import ImageComponent from "./core/Image.vue";
 
 export default {
   name: "streamer-card",
-  props: ["url", "image", "title", "content", "altColor", "isOnline"],
+  props: ["streamer", "altColor"],
   components: {
     ImageComponent
+  },
+  computed: {
+    isOnline() {
+      return this.streamer.twitchProfile.type === "live";
+    },
+    imageUrl() {
+      if (!this.streamer.twitchProfile.thumbnail_url) return 'offline.png'
+      return this.streamer.twitchProfile.thumbnail_url.replace('{width}x{height}', '400x280');
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/styles/_global.scss";
 
 .streamer-card {
@@ -43,6 +62,10 @@ export default {
     margin: 6px 0;
   }
 
+  .title {
+    margin: 0;
+  }
+
   &:hover {
     color: $accent-alt;
     border-bottom-color: $accent-alt;
@@ -51,24 +74,28 @@ export default {
   &.offline {
     filter: brightness(0.6);
   }
-}
 
-.alt-color {
-  color: $accent-alt;
-  border-bottom-color: $accent-alt;
+  .alt-color {
+    color: $accent-alt;
+    border-bottom-color: $accent-alt;
 
-  &:hover {
-    color: $accent;
-    border-bottom-color: $accent;
+    &:hover {
+      color: $accent;
+      border-bottom-color: $accent;
+    }
   }
-}
 
-.content {
-  color: $text;
-}
+  .content {
+    color: $text;
 
-.title-container {
-  display: flex;
+    > * {
+      margin: 0;
+    }
+  }
+
+  .title-container {
+    display: flex;
+  }
 }
 
 .streamer-status {

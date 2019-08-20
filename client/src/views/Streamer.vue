@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'stream'
+  name: 'streamer'
 }
 </script>
