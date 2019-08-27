@@ -5,7 +5,7 @@ export default {
   },
   api: {
     ssl: true,
-    domain: 'api.saghen.com'
+    domain: 'api.sploushtroupe.com'
   },
   images: {
     path: "/images"
