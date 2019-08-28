@@ -1,9 +1,6 @@
 <template>
   <div id="manage-base">
     <side-nav id="members-side-nav">
-      <router-link to="/manage">
-        <span>Home</span>
-      </router-link>
       <router-link to="/manage/news">
         <span>News</span>
       </router-link>
@@ -12,6 +9,9 @@
       </router-link>
       <router-link to="/manage/teams">
         <span>Teams</span>
+      </router-link>
+      <router-link to="/manage/applications">
+        <span>Applications</span>
       </router-link>
     </side-nav>
     <div id="manage-view">

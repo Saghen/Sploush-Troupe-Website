@@ -4,8 +4,8 @@ export default {
     enabled: true
   },
   api: {
-    ssl: true,
-    domain: 'api.sploushtroupe.com'
+    ssl: false,
+    domain: 'localhost:8081'
   },
   images: {
     path: "/images"

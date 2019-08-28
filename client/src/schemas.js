@@ -28,6 +28,31 @@ export const NewsSchema = {
   ]
 };
 
+export const ApplicationsSchema = {
+  endpoint: "/applications",
+  params: [
+    {
+      name: "url",
+      large: true
+    },
+    {
+      name: "name",
+      large: true
+    },
+    {
+      name: "description",
+      type: "editor"
+    },
+    {
+      name: "content",
+      type: "editor"
+    },
+    {
+      name: 'applyUrl'
+    }
+  ]
+};
+
 export const StreamerSchema = {
   endpoint: "/streamers",
   params: [
@@ -118,6 +143,8 @@ export default function getSchema(schema) {
       return TeamMemberSchema;
     case "team-achievement":
       return TeamAchievementSchema;
+    case "application":
+      return ApplicationsSchema;
     default:
       throw new Error(`No schema found with name: ${schema}`);
   }

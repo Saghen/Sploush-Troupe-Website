@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <div>
+    <container></container>
+  </div>
 </template>
 
 <script>
+import Container from 'Components/core/Container';
+
 export default {
-  name: 'team'
+  name: 'team',
+  components: {
+    Container
+  }
 }
 </script>

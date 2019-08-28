@@ -31,6 +31,7 @@
         <span>Sponsors</span>
       </router-link>
       <router-link to="/about">
+        <img src="../assets/about-us-icon.png" style="height: 24px"/>
         <span>About Us</span>
       </router-link>
       <router-link to="/store">

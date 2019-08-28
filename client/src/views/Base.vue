@@ -23,7 +23,7 @@ import FooterNav from "@/components/FooterNav.vue";
 export default {
   mounted() {
     document.querySelector(
-      "#app"
+      "#primary-view"
     ).style.backgroundImage = `url(//${config.api.domain}${config.images.path}/homebg.jpg)`;
   },
   components: {
@@ -45,6 +45,7 @@ export default {
   overflow: auto;
   transform: translateZ(0);
   color: $text;
+  background-color: desaturate($dark, 0.2);
   background-size: cover;
 
   h1,

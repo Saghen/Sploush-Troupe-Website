@@ -34,7 +34,7 @@ export default new Router({
             )
         },
         {
-          path: "applications/:listing",
+          path: "applications/:url",
           name: "job-listing",
           component: () =>
             import(
@@ -71,13 +71,17 @@ export default new Router({
           path: "streamers",
           name: "streams",
           component: () =>
-            import(/* webpackChunkName: "view-streams" */ `@/views/Streamers.vue`)
+            import(
+              /* webpackChunkName: "view-streams" */ `@/views/Streamers.vue`
+            )
         },
         {
           path: "streamers/:stream",
           name: "stream",
           component: () =>
-            import(/* webpackChunkName: "view-streams" */ `@/views/Streamer.vue`)
+            import(
+              /* webpackChunkName: "view-streams" */ `@/views/Streamer.vue`
+            )
         },
         {
           path: "sponsors",
@@ -94,14 +98,6 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "view-manage" */ `@/views/admin/Base.vue`),
       children: [
-        {
-          path: "",
-          name: "manage-home",
-          component: () =>
-            import(
-              /* webpackChunkName: "view-manage-home" */ `@/views/admin/Home.vue`
-            )
-        },
         {
           path: "news",
           name: "manage-news",
@@ -132,6 +128,14 @@ export default new Router({
           component: () =>
             import(
               /* webpackChunkName: "view-manage-teams" */ `@/views/admin/Teams.vue`
+            )
+        },
+        {
+          path: "applications",
+          name: "manage-applications",
+          component: () =>
+            import(
+              /* webpackChunkName: "view-manage-teams" */ `@/views/admin/Applications.vue`
             )
         }
       ]

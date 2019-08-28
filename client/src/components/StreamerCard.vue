@@ -1,6 +1,6 @@
 <template>
-  <router-link
-    :to="streamer.url || `/streamers/${streamer.twitchId}`"
+  <a
+    @click="openModal"
     class="streamer-card"
     :class="{ 'alt-color': altColor, offline: !isOnline }"
   >
@@ -20,7 +20,7 @@
       </span>
     </div>
     <span class="content" v-html="streamer.description"></span>
-  </router-link>
+  </a>
 </template>
 
 <script>
@@ -37,8 +37,16 @@ export default {
       return this.streamer.twitchProfile.type === "live";
     },
     imageUrl() {
-      if (!this.streamer.twitchProfile.thumbnail_url) return 'offline.png'
-      return this.streamer.twitchProfile.thumbnail_url.replace('{width}x{height}', '400x280');
+      if (!this.streamer.twitchProfile.thumbnail_url) return "offline.png";
+      return this.streamer.twitchProfile.thumbnail_url.replace(
+        "{width}x{height}",
+        "400x280"
+      );
+    }
+  },
+  methods: {
+    openModal() {
+      this.$modal.show("streamer", { streamer: this.streamer });
     }
   }
 };

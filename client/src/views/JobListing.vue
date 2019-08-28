@@ -1,7 +1,8 @@
 <template>
   <div id="job-listing">
-    <container :header="listing.title" column="true">
-      <div></div>
+    <container :header="listing.name" column="true" center="true">
+      <div v-html="listing.content"></div>
+      <router-link class="link" :to="listing.url">READ MORE AND APPLY</router-link>
     </container>
   </div>
 </template>
@@ -16,13 +17,13 @@ export default {
   },
   data() {
     return {
-      listing: {
-        title: "Job Position Name",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        url: "listing"
-      }
+      listing: {}
     };
+  },
+  created() {
+    this.$http(`/applications/get?url=${this.$route.params.url}`).then(
+      data => (this.listing = data.data)
+    );
   }
 };
 </script>
@@ -35,19 +36,19 @@ export default {
   margin: auto;
 }
 
-.link,
-.title {
+.link {
   display: block;
   position: relative;
   color: $text;
   font-family: $header-font;
   letter-spacing: 0.06em;
   text-decoration: underline;
-}
-
-.link {
   font-size: 1.2em;
-  align-self: flex-end;
+  transition: 0.2s color;
+
+  &:hover {
+    color: $accent;
+  }
 }
 
 .title {

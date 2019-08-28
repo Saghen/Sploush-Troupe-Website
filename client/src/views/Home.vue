@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <container header="Merchandise" wrap="true">
-      <store-card url="temp-url" image="store1menu.png"></store-card>
-      <store-card url="temp-url" image="store2menu.png"></store-card>
-      <store-card url="temp-url" image="store3menu.png"></store-card>
+      <store-card url="//sectorsixapparel.com/collections/sploush-troupe/products/sploush-troupe-baseball-jersey" image="store1menu.png"></store-card>
+      <store-card url="//sectorsixapparel.com/collections/sploush-troupe/products/sploush-troupe-pro-hoodie" image="store2menu.png"></store-card>
+      <store-card url="//sectorsixapparel.com/collections/sploush-troupe/products/sploush-troupe-pro-jacket" image="store3menu.png"></store-card>
     </container>
     <container header="Teams" wrap="true">
       <team-card v-for="team in teams" :key="team._id" :team="team"></team-card>

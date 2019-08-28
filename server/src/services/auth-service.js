@@ -1,8 +1,7 @@
-const { NotFound, Forbidden, Conflict, BadRequest } = require('fejl');
-const config = require('Config');
+const { NotFound, Forbidden, BadRequest } = require('fejl');
 
-const userDB = require('./db/user-db');
-const userClient = new userDB();
+const UserDB = require('./db/user-db');
+const userClient = new UserDB();
 
 module.exports = class AuthService {
   /**

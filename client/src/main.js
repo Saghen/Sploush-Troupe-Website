@@ -1,17 +1,21 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import axios from 'axios';
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import axios from "axios";
 
 Vue.config.productionTip = false;
 
-import config from './config';
+import config from "./config";
 
 Vue.prototype.$http = axios.create({
-  baseURL: `${config.api.ssl ? 'https://' : 'http://'}${config.api.domain}`,
+  baseURL: `${config.api.ssl ? "https://" : "http://"}${config.api.domain}`,
   json: true
 });
+
+// Modal
+import VModal from "vue-js-modal";
+Vue.use(VModal);
 
 // Toast
 import Toasted from "vue-toasted";

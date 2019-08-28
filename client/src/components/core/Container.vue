@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2 v-if="header">{{ header }}</h2>
-    <div class="container-items" :class="{ column, wrap }">
+    <div class="container-items" :class="{ column, wrap, center }">
       <slot></slot>
     </div>
   </div>
@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'container',
-  props: ['header', 'column', 'wrap']
+  props: ['header', 'column', 'wrap', 'center']
 }
 </script>
 
@@ -43,6 +43,11 @@ h2 {
 
 .wrap {
   flex-wrap: wrap;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
 }
 </style>
 
