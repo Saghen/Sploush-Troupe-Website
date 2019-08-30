@@ -23,7 +23,7 @@
         <div>
           <router-link to="/applications">Applications</router-link>
           <router-link to="/sponsors">Sponsors</router-link>
-          <router-link to="/store">Store</router-link>
+          <router-link to="//sectorsixapparel.com/collections/sploush-troupe">Store</router-link>
         </div>
       </div>
     </nav>
