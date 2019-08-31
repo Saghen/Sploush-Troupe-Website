@@ -1,7 +1,6 @@
 const KoaRouter = require('koa-router');
 const AuthService = require('Services/auth-service');
 const config = require('Config');
-const jwt = require('jsonwebtoken');
 
 const { userToToken, jwtMiddleware } = require('Helpers/auth');
 
