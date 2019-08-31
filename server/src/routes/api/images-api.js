@@ -1,4 +1,5 @@
 const { BadRequest } = require('fejl');
+const { jwtMiddleware } = require('Helpers/auth');
 
 const send = require('koa-send');
 
@@ -15,7 +16,7 @@ router.all('*', async (ctx, next) => {
   if (ctx.status === 404) ctx.notFound('Image not found');
 });
 
-router.post('/insert', async ctx => {
+router.post('/insert', jwtMiddleware(), async ctx => {
   BadRequest.assert(
     ctx.request.files && ctx.request.files.image,
     'An image must be provided'

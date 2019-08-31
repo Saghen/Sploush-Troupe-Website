@@ -1,4 +1,5 @@
 const applicationClient = new (require('Services/application-service'))();
+const { jwtMiddleware } = require('Helpers/auth');
 
 const Router = require('koa-router');
 const router = new Router();
@@ -13,13 +14,13 @@ router.get('/list', async ctx => {
   ctx.ok(await applicationClient.list());
 });
 
-router.post('/insert', async ctx => {
+router.post('/insert', jwtMiddleware(), async ctx => {
   const body = ctx.request.body;
   const newsItem = await applicationClient.insert(body);
   ctx.ok(newsItem);
 });
 
-router.post('/update', async ctx => {
+router.post('/update', jwtMiddleware(), async ctx => {
   const body = ctx.request.body;
   const newsItem = await applicationClient.update(body.id, {
     ...body,
@@ -28,7 +29,7 @@ router.post('/update', async ctx => {
   ctx.ok(newsItem);
 });
 
-router.post('/delete', async ctx => {
+router.post('/delete', jwtMiddleware(), async ctx => {
   ctx.ok(await applicationClient.delete(ctx.request.body.id));
 });
 

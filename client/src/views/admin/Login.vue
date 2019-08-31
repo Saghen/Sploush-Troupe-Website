@@ -42,8 +42,9 @@ export default {
           console.log(data);
           const token = data.token;
 
-          axios.interceptors.request.use(config => {
-            config.headers.Authorization = token;
+          this.$http.interceptors.request.use(config => {
+            console.log(token);
+            config.headers.Authorization = `Bearer ${token}`;
             return config;
           });
           this.$router.push("/manage");
