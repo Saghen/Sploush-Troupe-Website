@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="/\//.test(item.url) ? item.url : `/news/${item.url}`"
+    :to="/edit\?/.test(item.url) ? item.url : `/news/${item.url}`"
     class="news-card"
     :class="{ 'alt-color': altColor }"
   >
