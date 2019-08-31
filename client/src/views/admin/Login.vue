@@ -42,14 +42,6 @@ export default {
           console.log(data);
           const token = data.token;
           localStorage.setItem("token", token);
-
-          this.$http.interceptors.request.use(config => {
-            console.log(token);
-            config.headers.Authorization = `Bearer ${localStorage.getItem(
-              "token"
-            )}`;
-            return config;
-          });
           this.$router.push("/manage");
         })
         .catch(err => (this.errorMessage = err.response.data.message));

@@ -13,6 +13,11 @@ Vue.prototype.$http = axios.create({
   json: true
 });
 
+Vue.prototype.$http.interceptors.request.use(config => {
+  config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+  return config;
+});
+
 // Modal
 import VModal from "vue-js-modal";
 Vue.use(VModal);
