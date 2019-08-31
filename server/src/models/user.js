@@ -16,7 +16,7 @@ let validatePassword = function(password) {
 };
 
 let UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     trim: true,
     unique: true,
@@ -36,7 +36,6 @@ let UserSchema = new Schema({
   },
   admin: {
     type: Boolean,
-    required: true,
     default: true
   }
 });
