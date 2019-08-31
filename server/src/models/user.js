@@ -23,8 +23,7 @@ let UserSchema = new Schema({
     lowercase: true,
     required: true,
     index: true,
-    validate: [validateLocalStrategyProperty, 'Please fill in your email'],
-    match: [/.+\@.+\..+/, 'Please fill a valid email address']
+    validate: [validateLocalStrategyProperty, 'Please fill in your email']
   },
   password: {
     type: String,
