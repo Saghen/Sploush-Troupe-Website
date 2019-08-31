@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import axios from "axios";
 
 Vue.use(Router);
 
@@ -98,7 +97,8 @@ const router = new Router({
       path: "/manage",
       beforeEnter: (to, from, next) => {
         console.log("hi");
-        axios("/auth/check")
+        router.app
+          .$http("/auth/check")
           .then(() => next())
           .catch(() => next("/login"));
       },

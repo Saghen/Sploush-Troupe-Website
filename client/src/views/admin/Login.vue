@@ -38,7 +38,7 @@ export default {
           username: this.username,
           password: this.password
         })
-        .then(this.$router.push("/manage"))
+        .then(() => this.$router.push("/manage"))
         .catch(err => this.errorMessage = err.response.data.message);
     }
   }
