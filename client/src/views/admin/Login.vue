@@ -41,10 +41,13 @@ export default {
         .then(({ data }) => {
           console.log(data);
           const token = data.token;
+          localStorage.setItem("token", token);
 
           this.$http.interceptors.request.use(config => {
             console.log(token);
-            config.headers.Authorization = `Bearer ${token}`;
+            config.headers.Authorization = `Bearer ${localStorage.getItem(
+              "token"
+            )}`;
             return config;
           });
           this.$router.push("/manage");
