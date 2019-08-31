@@ -12,7 +12,7 @@ const authService = new AuthService();
 router.prefix('/auth');
 
 router.post('/login', async ctx => {
-  const user = await authService.login(ctx.body);
+  const user = await authService.login(ctx.request.body);
   const token = userToToken(user);
 
   ctx.cookies.set('token', token, {

@@ -19,7 +19,7 @@
       @input="emit"
     />
     <input
-      v-if="!options.type === 'password'"
+      v-if="options.type === 'password'"
       :class="{ large: options.large }"
       :placeholder="options.nameReadable"
       type="password"

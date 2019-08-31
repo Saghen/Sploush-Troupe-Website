@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import axios from "axios";
 
 Vue.use(Router);
 
@@ -95,9 +96,10 @@ const router = new Router({
     },
     {
       path: "/manage",
-      beforeRouteEnter: (to, from, next) => {
-        this.$http("/auth/check")
-          .then(() => next(to))
+      beforeEnter: (to, from, next) => {
+        console.log("hi");
+        axios("/auth/check")
+          .then(() => next())
           .catch(() => next("/login"));
       },
       component: () =>
@@ -147,10 +149,11 @@ const router = new Router({
     },
     {
       path: "/login",
+      name: "login",
       component: () =>
-        import(
-          /* webpackChunkName: "view-login" */ `@/views/admin/Login.vue`
-        )
+        import(/* webpackChunkName: "view-login" */ `@/views/admin/Login.vue`)
     }
   ]
 });
+
+export default router;
