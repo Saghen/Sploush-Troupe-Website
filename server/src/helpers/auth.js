@@ -12,7 +12,6 @@ module.exports = {
 
   jwtMiddleware(passthrough = false) {
     return koaJWT({
-      cookie: 'token',
       secret: config.get('auth').JWTSecret,
       passthrough
     });

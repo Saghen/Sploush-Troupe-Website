@@ -38,8 +38,17 @@ export default {
           username: this.username,
           password: this.password
         })
-        .then(() => this.$router.push("/manage"))
-        .catch(err => this.errorMessage = err.response.data.message);
+        .then(({ data }) => {
+          console.log(data);
+          const token = data.token;
+
+          axios.interceptors.request.use(config => {
+            config.headers.Authorization = token;
+            return config;
+          });
+          this.$router.push("/manage");
+        })
+        .catch(err => (this.errorMessage = err.response.data.message));
     }
   }
 };
