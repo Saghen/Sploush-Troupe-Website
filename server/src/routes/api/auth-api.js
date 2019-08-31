@@ -23,6 +23,8 @@ router.post('/login', async ctx => {
   ctx.ok({ message: 'Successfully logged in' });
 });
 
+router.get('/check', jwtMiddleware(), ctx => ctx.ok('Logged in'))
+
 router.post('/logout', async ctx => {
   ctx.cookies.set('token', {});
 

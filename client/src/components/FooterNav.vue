@@ -1,16 +1,16 @@
 <template>
   <footer>
     <div id="footer">
-      <router-link to="/sponsor-link">
+      <router-link to="https://rogueenergy.com/">
         <image-component image="footersponsor1.png" size="256"></image-component>
       </router-link>
-      <router-link to="/sponsor-link">
+      <router-link to="https://sectorsixapparel.com/">
         <image-component image="footersponsor2.png" size="256"></image-component>
       </router-link>
       <router-link to="/sponsor-link">
         <image-component image="footertwitch.png" size="256"></image-component>
       </router-link>
-      <router-link to="/sponsor-link">
+      <router-link to="https://twitter.com/SploushTroupe/">
         <image-component image="footertwitter.png" size="256"></image-component>
       </router-link>
     </div>

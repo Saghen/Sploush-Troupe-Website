@@ -34,7 +34,7 @@
         <img src="../assets/about-us-icon.png" style="height: 24px"/>
         <span>About Us</span>
       </router-link>
-      <router-link to="/store">
+      <router-link to="https://sectorsixapparel.com/collections/sploush-troupe">
         <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
         <span>Store</span>
       </router-link>
