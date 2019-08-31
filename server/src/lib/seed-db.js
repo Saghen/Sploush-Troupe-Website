@@ -1,4 +1,4 @@
-const User = require('Models/User');
+const User = require('Models/user');
 const config = require('Config');
 
 module.exports = async () => {
