@@ -5,7 +5,7 @@ Vue.use(Router);
 
 import Base from "./views/Base.vue";
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -95,6 +95,13 @@ export default new Router({
     },
     {
       path: "/manage",
+      beforeEnter: (to, from, next) => {
+        console.log("hi");
+        router.app
+          .$http("/auth/check")
+          .then(() => next())
+          .catch(() => next("/login"));
+      },
       component: () =>
         import(/* webpackChunkName: "view-manage" */ `@/views/admin/Base.vue`),
       children: [
@@ -139,6 +146,14 @@ export default new Router({
             )
         }
       ]
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () =>
+        import(/* webpackChunkName: "view-login" */ `@/views/admin/Login.vue`)
     }
   ]
 });
+
+export default router;

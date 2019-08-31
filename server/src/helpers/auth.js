@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 module.exports = {
   userToToken(user) {
     return jwt.sign({
-      email: user.email,
+      username: user.username,
       admin: user.admin
     }, config.get('auth').JWTSecret)
   },

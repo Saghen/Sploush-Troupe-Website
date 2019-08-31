@@ -16,15 +16,14 @@ let validatePassword = function(password) {
 };
 
 let UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     trim: true,
     unique: true,
     lowercase: true,
     required: true,
     index: true,
-    validate: [validateLocalStrategyProperty, 'Please fill in your email'],
-    match: [/.+\@.+\..+/, 'Please fill a valid email address']
+    validate: [validateLocalStrategyProperty, 'Please fill in your email']
   },
   password: {
     type: String,
@@ -36,7 +35,6 @@ let UserSchema = new Schema({
   },
   admin: {
     type: Boolean,
-    required: true,
     default: true
   }
 });

@@ -5,6 +5,8 @@ const cors = require('@koa/cors');
 const respond = require('koa-respond');
 const koaBody = require('koa-body');
 
+const seedDB = require('Lib/seed-db');
+
 const logger = require('Logger');
 const notFoundHandler = require('Middleware/not-found');
 const errorHandler = require('Middleware/error-handler');
@@ -23,6 +25,7 @@ module.exports.createServer = async function createServer() {
   logger.info('Creating server...');
 
   await mongo();
+  await seedDB();
 
   const app = new Koa();
 

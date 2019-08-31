@@ -123,6 +123,21 @@ const config = convict({
         'Toggle for enabling or disabling authentication for testing/development',
       format: Boolean,
       default: true
+    },
+    username: {
+      doc: 'Username for authentication',
+      format: String,
+      default: 'admin'
+    },
+    password: {
+      doc: 'Password for authentication',
+      format: String,
+      default: 'admin'
+    },
+    JWTSecret: {
+      doc: 'Secret for JWT serializing',
+      format: String,
+      default: 'rainbowUnicorns'
     }
   },
   images: {

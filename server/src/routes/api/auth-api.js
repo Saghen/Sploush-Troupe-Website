@@ -1,7 +1,6 @@
 const KoaRouter = require('koa-router');
 const AuthService = require('Services/auth-service');
 const config = require('Config');
-const jwt = require('jsonwebtoken');
 
 const { userToToken, jwtMiddleware } = require('Helpers/auth');
 
@@ -12,7 +11,7 @@ const authService = new AuthService();
 router.prefix('/auth');
 
 router.post('/login', async ctx => {
-  const user = await authService.login(ctx.body);
+  const user = await authService.login(ctx.request.body);
   const token = userToToken(user);
 
   ctx.cookies.set('token', token, {
@@ -22,6 +21,8 @@ router.post('/login', async ctx => {
 
   ctx.ok({ message: 'Successfully logged in', token });
 });
+
+router.get('/check', jwtMiddleware(), ctx => ctx.ok('Logged in'))
 
 router.post('/logout', async ctx => {
   ctx.cookies.set('token', {});

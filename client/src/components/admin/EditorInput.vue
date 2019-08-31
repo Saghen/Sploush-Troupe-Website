@@ -19,6 +19,14 @@
       @input="emit"
     />
     <input
+      v-if="options.type === 'password'"
+      :class="{ large: options.large }"
+      :placeholder="options.nameReadable"
+      type="password"
+      :value="value"
+      @input="emit"
+    />
+    <input
       v-if="!options.type || options.type === 'image'"
       :class="{ large: options.large }"
       :placeholder="options.nameReadable"

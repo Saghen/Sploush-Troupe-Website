@@ -1,18 +1,18 @@
 <template>
   <footer>
     <div id="footer">
-      <router-link to="/sponsor-link">
+      <a href="//rogueenergy.com/">
         <image-component image="footersponsor1.png" size="256"></image-component>
-      </router-link>
-      <router-link to="/sponsor-link">
+      </a>
+      <a href="//sectorsixapparel.com/">
         <image-component image="footersponsor2.png" size="256"></image-component>
-      </router-link>
-      <router-link to="/sponsor-link">
+      </a>
+      <router-link to="/streamers">
         <image-component image="footertwitch.png" size="256"></image-component>
       </router-link>
-      <router-link to="/sponsor-link">
+      <a href="//twitter.com/SploushTroupe/">
         <image-component image="footertwitter.png" size="256"></image-component>
-      </router-link>
+      </a>
     </div>
   </footer>
 </template>
