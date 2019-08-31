@@ -133,6 +133,11 @@ const config = convict({
       doc: 'Password for authentication',
       format: String,
       default: 'admin'
+    },
+    JWTSecret: {
+      doc: 'Secret for JWT serializing',
+      format: String,
+      default: 'rainbowUnicorns'
     }
   },
   images: {
