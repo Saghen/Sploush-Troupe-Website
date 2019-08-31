@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login-card">
       <h1>Login</h1>
-      <editor-input v-model="email" :options="{ nameReadable: 'Email'}"></editor-input>
+      <editor-input v-model="username" :options="{ nameReadable: 'Username'}"></editor-input>
       <editor-input v-model="password" :options="{ nameReadable: 'Password', type: 'password' }"></editor-input>
       <span v-if="errorMessage" class="error-message">{{ errorMessage }}</span>
       <a @click.prevent="login" class="button">Login</a>
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       errorMessage: false
     };
@@ -35,7 +35,7 @@ export default {
     login() {
       this.$http
         .post("/auth/login", {
-          email: this.email,
+          username: this.username,
           password: this.password
         })
         .then(this.$router.push("/manage"))
