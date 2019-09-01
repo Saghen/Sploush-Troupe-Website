@@ -26,7 +26,8 @@ export default {
 @import "@/styles/_global.scss";
 
 .news-card {
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   color: $accent;
@@ -38,6 +39,10 @@ export default {
 
   > * {
     margin: 6px 0;
+  }
+
+  > img {
+    width: 100%;
   }
 
   &:hover {
@@ -58,6 +63,10 @@ export default {
 
 .content {
   color: $text;
+      display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 
   > * {
     margin: 0;

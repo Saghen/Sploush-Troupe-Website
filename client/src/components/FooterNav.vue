@@ -46,4 +46,15 @@ footer {
   }
 }
 
+@media only screen and (max-width: 900px) {
+  #footer {
+    align-items: center;
+    flex-direction: column;
+
+    * + * {
+      margin-top: 16px;
+    }
+  }
+}
+
 </style>
