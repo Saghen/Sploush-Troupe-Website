@@ -46,7 +46,7 @@ footer {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 760px) {
   #footer {
     align-items: center;
     flex-direction: column;
