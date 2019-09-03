@@ -17,7 +17,8 @@ $width: 1200px;
 
 <script>
 import CKEditor from "@ckeditor/ckeditor5-vue";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ClassicEditor from "@saghen/ckeditor5-build-custom";
+
 
 // import { ToggleButton } from "vue-js-toggle-button";
 
@@ -27,12 +28,12 @@ export default {
     ckeditor: CKEditor.component
   },
   data() {
-    return { editor: ClassicEditor, config: {} };
+    return { editor: ClassicEditor, config: { } };
   },
   props: ["value"],
   methods: {
     emit(e) {
-      this.$emit('input', e)
+      this.$emit("input", e);
     }
   }
 };
