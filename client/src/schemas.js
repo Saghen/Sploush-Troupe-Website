@@ -2,6 +2,7 @@ export const NewsSchema = {
   endpoint: "/news",
   params: [
     {
+      type: "url",
       name: "url",
       large: true
     },
@@ -32,6 +33,7 @@ export const ApplicationsSchema = {
   endpoint: "/applications",
   params: [
     {
+      type: "url",
       name: "url",
       large: true
     },
@@ -48,7 +50,7 @@ export const ApplicationsSchema = {
       type: "editor"
     },
     {
-      name: 'applyUrl'
+      name: "applyUrl"
     }
   ]
 };
@@ -111,6 +113,7 @@ export const TeamSchema = {
   endpoint: "/teams",
   params: [
     {
+      type: "url",
       name: "url",
       large: true
     },

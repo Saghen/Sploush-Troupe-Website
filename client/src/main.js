@@ -25,7 +25,7 @@ Vue.use(VModal);
 // Toast
 import Toasted from "vue-toasted";
 
-Vue.use(Toasted);
+Vue.use(Toasted, { singleton: true });
 Vue.prototype.$sendToast = function(text, opts) {
   const defaultOpts = {
     type: "success",

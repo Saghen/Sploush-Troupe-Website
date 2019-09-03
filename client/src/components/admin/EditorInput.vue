@@ -27,6 +27,14 @@
       @input="emit"
     />
     <input
+      v-if="options.type === 'url'"
+      :class="{ large: options.large }"
+      :placeholder="options.nameReadable"
+      type="text"
+      :value="value"
+      @keypress="urlInput"
+    />
+    <input
       v-if="!options.type || options.type === 'image'"
       :class="{ large: options.large }"
       :placeholder="options.nameReadable"
@@ -34,6 +42,7 @@
       :value="value"
       @input="emit"
     />
+    <span style="color: red"></span>
   </div>
 </template>
 
@@ -52,6 +61,16 @@ export default {
     emit(e) {
       if (e.target) this.$emit("input", e.target.value);
       else this.$emit("input", e);
+    },
+    urlInput(e) {
+      if (!/^[a-z-]*$/.test(e.key)) {
+        this.$toasted.error("URL only accepts lowercase letters and -", {
+          duration: 5000
+        });
+        e.preventDefault();
+        return;
+      }
+      this.emit(e);
     }
   }
 };
