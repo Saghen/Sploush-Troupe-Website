@@ -60,7 +60,7 @@ export default {
   display: flex;
   flex-direction: column;
   color: $accent;
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: 2px solid $accent;
   margin: 8px;
   padding-bottom: 6px;

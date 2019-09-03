@@ -51,7 +51,7 @@ export default {
 
 nav {
   font-family: $header-font;
-  font-size: 1.2em;
+  font-size: 1.3em;
   letter-spacing: 0.06em;
   background: $dark;
   padding: 8px 32px;

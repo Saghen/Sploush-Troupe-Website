@@ -27,13 +27,14 @@ img {
 a {
   display: block;
   position: relative;
-  color: $text;
+  color: $accent;
   font-size: 2em;
   font-family: $header-font;
   letter-spacing: 0.06em;
+  transition: 0.2s color;
 
   &:hover {
-    color: $accent;
+    color: $accent-alt;
   }
 }
 

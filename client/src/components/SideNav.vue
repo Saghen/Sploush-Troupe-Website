@@ -100,7 +100,7 @@ nav {
 nav a {
   font-family: $header-font;
   color: $text;
-  font-size: 1.2em;
+  font-size: 1.3em;
   letter-spacing: 0.06em;
   text-decoration: none;
   transition: 0.2s color;

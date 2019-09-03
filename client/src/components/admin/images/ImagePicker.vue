@@ -37,13 +37,7 @@ export default {
       el.select();
       document.execCommand("copy");
       document.body.removeChild(el);
-      this.sendToast("Copied to clipboard");
-    },
-    sendToast(text) {
-      this.$toasted.show(text, {
-        type: "success",
-        duration: 5000
-      });
+      this.$sendToast("Copied to clipboard");
     }
   },
   computed: {

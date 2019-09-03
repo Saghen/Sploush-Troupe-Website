@@ -1,11 +1,11 @@
 export default {
-  env: 'development',
+  env: "development",
   auth: {
     enabled: true
   },
   api: {
     ssl: true,
-    domain: 'api.sploushtroupe.com'
+    domain: "api.sploushtroupe.com"
   },
   images: {
     path: "/images"

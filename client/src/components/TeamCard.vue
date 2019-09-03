@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="/\//.test(team.url) ? team.url : `/teams/${team.url}`">
+  <router-link :to="/edit\?/.test(team.url) ? team.url : `/teams/${team.url}`">
     <image-component :image="team.image" size="512"></image-component>
     <span>VIEW TEAM</span>
   </router-link>
@@ -29,10 +29,11 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: $text;
+  color: $accent;
+  transition: 0.2s color;
 
   &:hover {
-    color: $accent;
+    color: $accent-alt;
   }
 }
 

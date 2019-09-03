@@ -1,8 +1,8 @@
 <template>
   <div id="sponsors">
-    <container header="Sponsors">
-      <sponsor-card banner="footersponsor1.png" image="sponsor1large.jpg"></sponsor-card>
-      <sponsor-card banner="footersponsor2.png" image="sponsor2large.jpg"></sponsor-card>
+    <container header="Sponsors" wrap="true">
+      <sponsor-card url="//rogueenergy.com/" banner="footersponsor1.png" image="sponsor1large.jpg"></sponsor-card>
+      <sponsor-card url="//sectorsixapparel.com/" banner="footersponsor2.png" image="sponsor2large.jpg"></sponsor-card>
     </container>
   </div>
 </template>

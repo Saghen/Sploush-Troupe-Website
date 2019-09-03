@@ -27,17 +27,6 @@ export default {
       this.file = this.$refs.file.files[0];
       this.submitFile();
     },
-    sendToast(text) {
-      this.$toasted.show(text, {
-        type: 'success'
-      });
-    },
-
-    sendError(text) {
-      this.$toasted.show(text, {
-        type: 'error'
-      });
-    },
     submitFile() {
       let formData = new FormData();
       formData.append('image', this.file);
@@ -55,13 +44,13 @@ export default {
           }.bind(this),
         })
         .then(() => {
-          this.sendToast('Successfully uploaded');
+          this.$sendToast('Successfully uploaded');
         })
         .catch(err => {
           console.error(err);
           if (err.response && err.response.status === 401)
-            this.sendError('Please login to add an image');
-          else this.sendError(err.response.data.errors[0].message);
+            this.$sendToastError('Please login to add an image');
+          else this.$sendToastError(err.response.data.errors[0].message);
         });
     }
   }

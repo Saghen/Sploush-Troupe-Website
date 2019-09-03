@@ -3,7 +3,13 @@
     <router-link to="edit?schema=streamer" class="button">New Streamer</router-link>
     <h1>Streamers</h1>
     <div class="news-items">
-      <streamer-card v-for="streamer in streamers" :streamer="streamer" :key="streamer._id" />
+      <a
+        :href="`/manage/edit?schema=streamer&id=${streamer._id}`"
+        v-for="streamer in streamers"
+        :key="streamer._id"
+      >
+        <streamer-card :streamer="streamer" />
+      </a>
     </div>
   </div>
 </template>
@@ -48,5 +54,9 @@ export default {
   background: $dark;
   align-self: center;
   justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

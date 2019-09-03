@@ -27,7 +27,6 @@ h2 {
   border-bottom: 2px solid $accent;
   margin: 0;
   margin-bottom: 16px;
-  padding-left: 8px;
   text-align: left;
   font-size: 2em;
 }
