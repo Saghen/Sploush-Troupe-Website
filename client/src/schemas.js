@@ -148,6 +148,42 @@ export const AboutSchema = {
   ]
 };
 
+export const StoreItemSchema = {
+  endpoint: "/store",
+  params: [
+    {
+      name: "url",
+      large: true
+    },
+    {
+      name: "image",
+      large: true
+    }
+  ]
+};
+
+export const SponsorSchema = {
+  endpoint: "/sponsors",
+  params: [
+    {
+      name: "url",
+      large: true
+    },
+    {
+      name: "image",
+      large: true
+    },
+    {
+      name: "logoImage",
+      large: true
+    },
+    {
+      name: "content",
+      type: "editor"
+    }
+  ]
+};
+
 export default function getSchema(schema) {
   switch (schema) {
     case "news":
@@ -164,6 +200,10 @@ export default function getSchema(schema) {
       return ApplicationsSchema;
     case "about":
       return AboutSchema;
+    case "sponsor":
+      return SponsorSchema;
+    case "store-item":
+      return StoreItemSchema;
     default:
       throw new Error(`No schema found with name: ${schema}`);
   }

@@ -1,6 +1,6 @@
 <template>
-  <a :href="url">
-    <image-component :image="image" size="512"></image-component>
+  <a :href="item.url">
+    <image-component :image="item.image" size="512"></image-component>
     <span>BUY NOW</span>
   </a>
 </template>
@@ -10,7 +10,7 @@ import ImageComponent from "./core/Image.vue";
 
 export default {
   name: "store-item",
-  props: ["url", "image"],
+  props: ["item"],
   components: {
     ImageComponent
   }

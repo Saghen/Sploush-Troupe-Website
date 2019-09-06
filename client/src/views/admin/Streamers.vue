@@ -1,8 +1,8 @@
 <template>
-  <div class="manage-news">
+  <div class="manage-streamers">
     <router-link to="edit?schema=streamer" class="button">New Streamer</router-link>
     <h1>Streamers</h1>
-    <div class="news-items">
+    <div class="streamers">
       <a
         :href="`/manage/edit?schema=streamer&id=${streamer._id}`"
         v-for="streamer in streamers"
@@ -18,7 +18,7 @@
 import StreamerCard from "Components/StreamerCard";
 
 export default {
-  name: "manage-news",
+  name: "manage-streamers",
   components: {
     StreamerCard
   },
@@ -40,14 +40,14 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_globalAdmin.scss";
 
-.manage-news {
+.manage-streamers {
   margin: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.news-items {
+.streamers {
   display: flex;
   flex-wrap: wrap;
   padding: 16px;

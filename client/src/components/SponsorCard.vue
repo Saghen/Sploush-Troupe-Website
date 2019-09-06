@@ -1,8 +1,8 @@
 <template>
-  <a :href="url" class="sponsor-card" :class="{ 'alt-color': altColor }">
-    <image-component :image="banner" size="512" width="500"></image-component>
-    <span class="content">{{ content }}</span>
-    <image-component :image="image" size="512" width="500" height="280"></image-component>
+  <a :href="sponsor.url" class="sponsor-card" :class="{ 'alt-color': altColor }">
+    <image-component :image="sponsor.logoImage" size="512" width="500"></image-component>
+    <span class="content">{{ sponsor.content }}</span>
+    <image-component :image="sponsor.image" size="512" width="500" height="280"></image-component>
   </a>
 </template>
 
@@ -11,7 +11,7 @@ import ImageComponent from "./core/Image.vue";
 
 export default {
   name: "sponsor-card",
-  props: ["url", "banner", "image", "title", "content", "altColor"],
+  props: ["sponsor", "altColor"],
   components: {
     ImageComponent
   }
