@@ -22,7 +22,7 @@ body {
   overflow: hidden;
 }
 
-a {
+a:not(.button) {
   position: relative;
   color: $accent;
   text-decoration: none;
