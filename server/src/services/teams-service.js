@@ -49,7 +49,7 @@ module.exports = class TeamsService {
     return teamsClient.update(team, data);
   }
 
-  async delete(id) {
+  async delete({ id }) {
     BadRequest.assert(isObjectId(id), 'Invalid ID provided');
     const team = await teamsClient.delete(id);
     NotFound.assert(team, 'Team not found');
