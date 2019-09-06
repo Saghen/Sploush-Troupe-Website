@@ -22,6 +22,27 @@ body {
   overflow: hidden;
 }
 
+a {
+  position: relative;
+  color: $accent;
+  text-decoration: none;
+  &::after {
+    content: "";
+    background-color: $accents;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    width: 0;
+    transition: 0.2s width;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
 .toasted-container.top-right {
   top: 0 !important;
   right: 2% !important;
