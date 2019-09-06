@@ -1,21 +1,24 @@
 <template>
-  <container :header="team.title">
-    <container>
-      <div v-for="member of team.members" :key="member._id">
-        <image-component :image="member.image" width="128" height="128" />
+  <container column="true" center="true" :header="team.title">
+    <container wrap="true">
+      <div class="member" v-for="member of team.members" :key="member._id">
+        <image-component :image="member.image" width="200" height="200" />
         <separator />
-        <span class="gamer-tag">{{ member.gamerTag }}</span>
+        <div class="member-primary">
+          <span class="gamer-tag">{{ member.gamerTag }}</span>
+          <span class="position">{{ member.position }}</span>
+        </div>
         <span class="name">{{ member.name }}</span>
       </div>
     </container>
-    <div v-if="team.achievements.length > 0">
+    <div class="achievements" v-if="team.achievements.length > 0">
       <h1>Achievements</h1>
-      <div v-for="achievement of team.achievements" :key="achievement._id">
-        {{ `-${achievement.title}: ` }}
+      <h3 class="achievement" v-for="achievement of team.achievements" :key="achievement._id">
+        {{ `${achievement.title}: ` }}
         <span
           :class="{first: achievement.place === 1, second: achievement.place === 2, third: achievement.place === 3}"
         >{{ toPlace(achievement.place) }} PLACE</span>
-      </div>
+      </h3>
     </div>
   </container>
 </template>
@@ -62,3 +65,59 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import "@/styles/_global.scss";
+
+.member {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+
+  > * + * {
+    margin-top: 8px;
+  }
+
+  > .member-primary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gamer-tag {
+    font-family: $header-font;
+    color: $accent;
+    font-size: 1.5em;
+  }
+
+  .position {
+    color: lighten($accent-alt, 10);
+  }
+}
+
+.achievements {
+  font-size: 1.3em;
+  > h1 {
+    text-decoration: underline;
+  }
+  > h1,
+  p {
+    text-align: center;
+  }
+
+  .achievement {
+    .first {
+      color: #ffae39;
+    }
+
+    .second {
+      color: #aaaaaa;
+    }
+
+    .third {
+      color: #70351f;
+    }
+  }
+}
+</style>
