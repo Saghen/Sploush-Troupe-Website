@@ -76,14 +76,6 @@ const router = new Router({
             )
         },
         {
-          path: "streamers/:stream",
-          name: "stream",
-          component: () =>
-            import(
-              /* webpackChunkName: "view-streams" */ `@/views/Streamer.vue`
-            )
-        },
-        {
           path: "sponsors",
           name: "sponsors",
           component: () =>
@@ -142,6 +134,22 @@ const router = new Router({
           component: () =>
             import(
               /* webpackChunkName: "view-manage-teams" */ `@/views/admin/Applications.vue`
+            )
+        },
+        {
+          path: "sponsors",
+          name: "manage-sponsors",
+          component: () =>
+            import(
+              /* webpackChunkName: "view-manage-teams" */ `@/views/admin/Sponsors.vue`
+            )
+        },
+        {
+          path: "store",
+          name: "manage-store",
+          component: () =>
+            import(
+              /* webpackChunkName: "view-manage-teams" */ `@/views/admin/Store.vue`
             )
         }
       ]

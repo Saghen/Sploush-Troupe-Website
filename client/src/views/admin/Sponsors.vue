@@ -3,26 +3,24 @@
     <router-link to="edit?schema=sponsor" class="button">New Sponsor</router-link>
     <h1>Sponsors</h1>
     <div class="sponsors">
-      <a
-        :href="`/manage/edit?schema=sponsor&id=${sponsor._id}`"
+      <router-link
+        :to="`/manage/edit?schema=sponsor&id=${sponsor._id}`"
         v-for="sponsor in sponsors"
         :key="sponsor._id"
       >
         <sponsor-card :sponsor="sponsor" />
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import Container from "../components/core/Container";
-import SponsorCard from "../components/SponsorCard";
+import SponsorCard from "Components/SponsorCard";
 
 export default {
   name: "manage-sponsors",
   components: {
-    SponsorCard,
-    Container
+    SponsorCard
   },
   data() {
     return {

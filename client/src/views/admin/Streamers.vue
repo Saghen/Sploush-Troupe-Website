@@ -3,13 +3,13 @@
     <router-link to="edit?schema=streamer" class="button">New Streamer</router-link>
     <h1>Streamers</h1>
     <div class="streamers">
-      <a
-        :href="`/manage/edit?schema=streamer&id=${streamer._id}`"
+      <router-link
+        :to="`/manage/edit?schema=streamer&id=${streamer._id}`"
         v-for="streamer in streamers"
         :key="streamer._id"
       >
         <streamer-card :streamer="streamer" />
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

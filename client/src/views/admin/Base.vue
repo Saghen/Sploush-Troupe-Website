@@ -1,6 +1,12 @@
 <template>
   <div id="manage-base">
     <side-nav id="members-side-nav">
+      <router-link to="/manage/edit?schema=about&id=random">
+        <span>About</span>
+      </router-link>
+      <router-link to="/manage/store">
+        <span>Store</span>
+      </router-link>
       <router-link to="/manage/news">
         <span>News</span>
       </router-link>
@@ -13,8 +19,8 @@
       <router-link to="/manage/applications">
         <span>Applications</span>
       </router-link>
-      <router-link to="/manage/edit?schema=about&id=random">
-        <span>About</span>
+      <router-link to="/manage/sponsors">
+        <span>Sponsors</span>
       </router-link>
     </side-nav>
     <div id="manage-view">

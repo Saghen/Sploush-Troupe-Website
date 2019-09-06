@@ -3,26 +3,24 @@
     <router-link to="edit?schema=store-item" class="button">New Store Item</router-link>
     <h1>Store Items</h1>
     <div class="store-items">
-      <a
-        :href="`/manage/edit?schema=store-item&id=${item._id}`"
+      <router-link
+        :to="`/manage/edit?schema=store-item&id=${item._id}`"
         v-for="item in storeItems"
         :key="item._id"
       >
         <store-card :item="item" />
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import Container from "../components/core/Container";
-import StoreCard from "../components/StoreCard";
+import StoreCard from "Components/StoreCard";
 
 export default {
   name: "manage-sponsors",
   components: {
-    StoreCard,
-    Container
+    StoreCard
   },
   data() {
     return {
