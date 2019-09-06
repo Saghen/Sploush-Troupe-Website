@@ -96,7 +96,6 @@ const router = new Router({
     {
       path: "/manage",
       beforeEnter: (to, from, next) => {
-        console.log("hi");
         router.app
           .$http("/auth/check")
           .then(() => next())

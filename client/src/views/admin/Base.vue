@@ -13,6 +13,9 @@
       <router-link to="/manage/applications">
         <span>Applications</span>
       </router-link>
+      <router-link to="/manage/edit?schema=about&id=random">
+        <span>About</span>
+      </router-link>
     </side-nav>
     <div id="manage-view">
       <router-view></router-view>
@@ -21,7 +24,7 @@
 </template>
 
 <script>
-import SideNav from 'Components/admin/SideNav.vue';
+import SideNav from "Components/admin/SideNav.vue";
 
 export default {
   components: {
@@ -31,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/_globalAdmin.scss';
+@import "@/styles/_globalAdmin.scss";
 
 #manage-base {
   position: relative;

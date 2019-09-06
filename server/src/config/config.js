@@ -144,7 +144,7 @@ const config = convict({
     path: {
       doc: 'The path to the optimized image folders',
       format: String,
-      default: path.join(global.__rootdir, '../gulp-images/images')
+      default: path.join(global.__rootdir, '../gulp-images/images/')
     }
   },
   twitch: {
@@ -162,6 +162,13 @@ const config = convict({
       doc: 'Timeout for cached items',
       format: Number,
       default: 60 * 15 // Timeout for cached twitch info
+    }
+  },
+  data: {
+    path: {
+      doc: 'The path to the data folder',
+      format: String,
+      default: path.join(global.__rootdir, './src/data/')
     }
   }
 });

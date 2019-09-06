@@ -134,6 +134,20 @@ export const TeamSchema = {
   ]
 };
 
+export const AboutSchema = {
+  endpoint: "/about",
+  params: [
+    {
+      name: "image",
+      large: true
+    },
+    {
+      name: "content",
+      type: "editor"
+    }
+  ]
+};
+
 export default function getSchema(schema) {
   switch (schema) {
     case "news":
@@ -148,6 +162,8 @@ export default function getSchema(schema) {
       return TeamAchievementSchema;
     case "application":
       return ApplicationsSchema;
+    case "about":
+      return AboutSchema;
     default:
       throw new Error(`No schema found with name: ${schema}`);
   }
