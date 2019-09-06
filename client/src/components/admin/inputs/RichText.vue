@@ -16,19 +16,15 @@ $width: 1200px;
 </style>
 
 <script>
-import CKEditor from "@ckeditor/ckeditor5-vue";
-import ClassicEditor from "@saghen/ckeditor5-build-custom";
-
-
 // import { ToggleButton } from "vue-js-toggle-button";
 
 export default {
   name: "rich-text",
   components: {
-    ckeditor: CKEditor.component
+    ckeditor: import("@ckeditor/ckeditor5-vue").component
   },
   data() {
-    return { editor: ClassicEditor, config: { } };
+    return { editor: import("@saghen/ckeditor5-build-custom"), config: { } };
   },
   props: ["value"],
   methods: {

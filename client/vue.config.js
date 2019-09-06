@@ -9,7 +9,7 @@ module.exports = {
         Components: path.resolve(__dirname, "src/components/"),
         Views: path.resolve(__dirname, "src/views/"),
         Config: path.resolve(__dirname, "src/config.js"),
-        Root: path.resolve(__dirname, 'src/')
+        Root: path.resolve(__dirname, "src/")
       }
     }
   },
