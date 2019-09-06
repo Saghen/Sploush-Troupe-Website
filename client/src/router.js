@@ -62,7 +62,7 @@ const router = new Router({
             import(/* webpackChunkName: "view-teams" */ `@/views/Teams.vue`)
         },
         {
-          path: "teams/:team",
+          path: "teams/:url",
           name: "team",
           component: () =>
             import(/* webpackChunkName: "view-teams" */ `@/views/Team.vue`)
