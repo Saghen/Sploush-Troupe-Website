@@ -12,5 +12,8 @@ module.exports = {
         Root: path.resolve(__dirname, 'src/')
       }
     }
+  },
+  chainWebpack: config => {
+    config.plugins.delete("prefetch");
   }
 };
