@@ -4,7 +4,10 @@ const SponsorSchema = new Schema({
   url: String,
   logoImage: String,
   image: String,
-  content: String
+  content: {
+    type: String,
+    required: false
+  }
 });
 
 for (let attribute in SponsorSchema.paths) {
