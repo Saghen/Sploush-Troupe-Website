@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const TeamMemberSchema = new Schema({
   gamerTag: String,
   name: String,
-  image: String
+  image: String,
+  position: String
 });
 
 for (let attribute in TeamMemberSchema.paths) {

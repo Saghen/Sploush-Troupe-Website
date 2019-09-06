@@ -90,6 +90,9 @@ export const TeamMemberSchema = {
     },
     {
       name: "image"
+    },
+    {
+      name: "position"
     }
   ]
 };
