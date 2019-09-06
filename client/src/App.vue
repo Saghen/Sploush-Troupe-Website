@@ -28,7 +28,7 @@ a {
   text-decoration: none;
   &::after {
     content: "";
-    background-color: $accents;
+    background-color: $accent;
     position: absolute;
     bottom: 0;
     left: 0;
