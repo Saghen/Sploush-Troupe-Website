@@ -39,7 +39,7 @@ export default {
     };
   },
   created() {
-    this.$http.get("/news/list").then(({ data }) => (this.news = data.data));
+    this.$http.get("/news/list").then(({ data }) => (this.news = data));
     this.$http.get("/teams/list").then(({ data }) => (this.teams = data));
     this.$http.get("/store/list").then(({ data }) => (this.storeItems = data));
   }
