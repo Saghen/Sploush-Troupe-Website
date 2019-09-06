@@ -113,6 +113,10 @@ export const TeamSchema = {
   endpoint: "/teams",
   params: [
     {
+      name: "title",
+      large: true
+    },
+    {
       type: "url",
       name: "url",
       large: true

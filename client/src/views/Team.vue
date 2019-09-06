@@ -1,17 +1,20 @@
 <template>
-  <container :header="header">
+  <container :header="team.title">
     <container>
-      <div v-for="member of members" :key="member._id">
+      <div v-for="member of team.members" :key="member._id">
         <image-component :image="member.image" width="128" height="128" />
-        <separator/>
+        <separator />
         <span class="gamer-tag">{{ member.gamerTag }}</span>
         <span class="name">{{ member.name }}</span>
       </div>
     </container>
-    <div v-if="achievements.length > 0">
+    <div v-if="team.achievements.length > 0">
       <h1>Achievements</h1>
-      <div v-for="achievement of achievements" :key="achievement._id">
-
+      <div v-for="achievement of team.achievements" :key="achievement._id">
+        {{ `-${achievement.title}: ` }}
+        <span
+          :class="{first: achievement.place === 1, second: achievement.place === 2, third: achievement.place === 3}"
+        >{{ toPlace(achievement.place) }} PLACE</span>
       </div>
     </div>
   </container>
@@ -31,10 +34,31 @@ export default {
   },
   data() {
     return {
-      header: "",
-      members: [],
-      achievements: []
+      team: {
+        title: "",
+        members: [],
+        achievements: []
+      }
     };
+  },
+  created() {
+    this.$http(`/teams/get?url=${this.$route.params.url}`).then(
+      ({ data }) => (this.team = data)
+    );
+  },
+  methods: {
+    toPlace(num) {
+      switch (num) {
+        case 1:
+          return "1st";
+        case 2:
+          return "2nd";
+        case 3:
+          return "3rd";
+        default:
+          return num + "th";
+      }
+    }
   }
 };
 </script>

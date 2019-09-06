@@ -4,6 +4,7 @@ const { TeamMemberSchema } = require('Models/team-member');
 const { TeamAchievementSchema } = require('Models/team-achievement');
 
 const TeamSchema = new Schema({
+  title: String,
   url: String,
   image: String,
   members: [TeamMemberSchema],
