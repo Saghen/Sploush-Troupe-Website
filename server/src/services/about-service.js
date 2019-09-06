@@ -2,9 +2,13 @@ const { BadRequest } = require('fejl');
 const config = require('Config');
 const fs = require('fs').promises;
 
+const path = require('path');
+const fileName = 'about.json';
+const filePath = path.join(config.get('data').path, fileName);
+
 module.exports = class NewsService {
   async get() {
-    return fs.readFile(config.get('data').path);
+    return fs.readFile(filePath);
   }
 
   async update(data) {
@@ -15,7 +19,7 @@ module.exports = class NewsService {
 
     const stringified = JSON.stringify(data);
 
-    await fs.writeFile(config.get('data').path, stringified);
+    await fs.writeFile(filePath, stringified);
     return stringified;
   }
 };
