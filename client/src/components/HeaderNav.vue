@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div id="top">
-        <router-link to="/" id="logo">
+        <router-link class="no-underline" to="/" id="logo">
           <image-component image="logo.png" size="256"></image-component>
         </router-link>
         <router-link to="/">Home</router-link>

@@ -17,7 +17,7 @@
         <font-awesome-icon :icon="['fab', 'twitch']"></font-awesome-icon>
         <span>Streamers</span>
       </router-link>
-      <router-link to="/">
+      <router-link class="no-underline" to="/">
         <div id="logo">
           <image-component image="logo.png" size="256"></image-component>
         </div>

@@ -43,6 +43,10 @@ a {
   }
 }
 
+a.no-underline::after {
+  content: none;
+}
+
 .toasted-container.top-right {
   top: 0 !important;
   right: 2% !important;
