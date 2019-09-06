@@ -1,7 +1,7 @@
 <template>
   <a :href="sponsor.url" class="sponsor-card" :class="{ 'alt-color': altColor }">
     <image-component :image="sponsor.logoImage" size="512" width="500"></image-component>
-    <span class="content">{{ sponsor.content }}</span>
+    <div v-html="sponsor.content"></div>
     <image-component :image="sponsor.image" size="512" width="500" height="280"></image-component>
   </a>
 </template>
