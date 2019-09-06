@@ -2,9 +2,9 @@
   <header>
     <nav>
       <div id="top">
-        <div id="logo">
+        <router-link to="/" id="logo">
           <image-component image="logo.png" size="256"></image-component>
-        </div>
+        </router-link>
         <router-link to="/">Home</router-link>
         <router-link to="/about">About Us</router-link>
         <div
