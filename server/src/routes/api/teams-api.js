@@ -26,7 +26,7 @@ router.post('/update', jwtMiddleware(), async ctx => {
 });
 
 router.post('/delete', jwtMiddleware(), async ctx => {
-  ctx.ok(await teamsClient.delete(ctx.request.body.url));
+  ctx.ok(await teamsClient.delete(ctx.request.body));
 });
 
 module.exports = router;
