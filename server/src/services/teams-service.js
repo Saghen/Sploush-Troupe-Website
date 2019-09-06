@@ -22,14 +22,14 @@ module.exports = class TeamsService {
     return teamsClient.list();
   }
 
-  async insert({ url, image, members, achievements }) {
+  async insert({ url, title, image, members, achievements }) {
     Conflict.assert(
       !(await teamsClient.get(url)),
       'A team already has the provided url'
     );
-    BadRequest.assert(url && image, 'A url and image must be provided');
+    BadRequest.assert(url && image && title, 'A url, title and image must be provided');
     assertInvalidUrl(urlIsValid(url));
-    return teamsClient.insert({ url, image, members, achievements });
+    return teamsClient.insert({ url, title, image, members, achievements });
   }
 
   async update(id, data) {
