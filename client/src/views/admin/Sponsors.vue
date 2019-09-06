@@ -4,6 +4,7 @@
     <h1>Sponsors</h1>
     <div class="sponsors">
       <router-link
+        class="no-underline"
         :to="`/manage/edit?schema=sponsor&id=${sponsor._id}`"
         v-for="sponsor in sponsors"
         :key="sponsor._id"

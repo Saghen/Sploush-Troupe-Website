@@ -3,13 +3,14 @@
     <router-link to="edit?schema=application" class="button">New Application</router-link>
     <h1>Applications</h1>
     <div class="applications">
-      <a
+      <router-link
+        class="no-underline"
         :href="`/manage/edit?schema=application&id=${listing._id}`"
         v-for="listing in listings"
         :key="listing.url"
       >
-        <application-card :listing="listing" ></application-card>
-      </a>
+        <application-card :listing="listing"></application-card>
+      </router-link>
     </div>
   </div>
 </template>
@@ -61,7 +62,7 @@ export default {
   justify-content: space-around;
 }
 
- a {
-   text-decoration: none;
- }
+a {
+  text-decoration: none;
+}
 </style>

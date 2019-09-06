@@ -4,6 +4,7 @@
     <h1>Store Items</h1>
     <div class="store-items">
       <router-link
+        class="no-underline"
         :to="`/manage/edit?schema=store-item&id=${item._id}`"
         v-for="item in storeItems"
         :key="item._id"

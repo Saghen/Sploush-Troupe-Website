@@ -4,6 +4,7 @@
     <h1>Streamers</h1>
     <div class="streamers">
       <router-link
+        class="no-underline"
         :to="`/manage/edit?schema=streamer&id=${streamer._id}`"
         v-for="streamer in streamers"
         :key="streamer._id"
