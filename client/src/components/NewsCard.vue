@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="/edit\?/.test(item.url) ? item.url : `/news/${item.url}`"
-    class="news-card"
+    class="news-card no-underline"
     :class="{ 'alt-color': altColor }"
   >
     <image-component :image="item.image" size="512" width="400" height="280"></image-component>

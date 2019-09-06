@@ -1,7 +1,7 @@
 <template>
   <a
     @click="openModal"
-    class="streamer-card"
+    class="streamer-card no-underline"
     :class="{ 'alt-color': altColor, offline: !isOnline }"
   >
     <image-component :image="imageUrl" width="400" height="225" />
@@ -65,6 +65,7 @@ export default {
   margin: 8px;
   padding-bottom: 6px;
   transition: 0.2s all;
+  cursor: pointer;
 
   > * {
     margin: 6px 0;

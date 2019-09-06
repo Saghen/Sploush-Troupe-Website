@@ -1,5 +1,5 @@
 <template>
-  <a :href="item.url">
+  <a :href="item.url" class="no-underline">
     <image-component :image="item.image" size="512"></image-component>
     <span>BUY NOW</span>
   </a>

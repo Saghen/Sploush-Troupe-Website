@@ -2,7 +2,7 @@
   <div class="job-listing">
     <span class="title">{{ listing.name }}</span>
     <div v-html="listing.description"></div>
-    <router-link class="link" :to="`/applications/${listing.url}`">READ MORE AND APPLY</router-link>
+    <router-link class="link no-underline" :to="`/applications/${listing.url}`">READ MORE AND APPLY</router-link>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="/edit\?/.test(team.url) ? team.url : `/teams/${team.url}`">
+  <router-link class="no-underline" :to="/edit\?/.test(team.url) ? team.url : `/teams/${team.url}`">
     <image-component :image="team.image" size="512"></image-component>
     <span>VIEW TEAM</span>
   </router-link>

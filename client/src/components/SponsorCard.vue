@@ -1,5 +1,5 @@
 <template>
-  <a :href="sponsor.url" class="sponsor-card" :class="{ 'alt-color': altColor }">
+  <a :href="sponsor.url" class="sponsor-card no-underline" :class="{ 'alt-color': altColor }">
     <image-component :image="sponsor.logoImage" size="512" width="500"></image-component>
     <div v-html="sponsor.content"></div>
     <image-component :image="sponsor.image" size="512" width="500" height="280"></image-component>
