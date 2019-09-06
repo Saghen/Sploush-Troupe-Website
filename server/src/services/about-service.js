@@ -8,7 +8,6 @@ const filePath = path.join(config.get('data').path, fileName);
 
 module.exports = class NewsService {
   async get() {
-    console.log(filePath);
     return fs.readFile(filePath);
   }
 
