@@ -96,6 +96,10 @@ export default {
   }
 }
 
+.member + .member {
+  margin-left: 32px;
+}
+
 .achievements {
   font-size: 1.3em;
   > h1 {
