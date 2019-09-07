@@ -13,7 +13,7 @@ module.exports = class TeamDB {
   }
 
   async insert({ url, title, image, members, achievements }) {
-    if (await this.get(url)) throw new Error('Url already exists');
+    if (await this.get({url})) throw new Error('Url already exists');
 
     const team = new Team(
       sanitize({ url, title, image, members, achievements })
