@@ -5,7 +5,7 @@
     <div class="applications">
       <router-link
         class="no-underline"
-        :href="`/manage/edit?schema=application&id=${listing._id}`"
+        :to="`/manage/edit?schema=application&id=${listing._id}`"
         v-for="listing in listings"
         :key="listing.url"
       >
