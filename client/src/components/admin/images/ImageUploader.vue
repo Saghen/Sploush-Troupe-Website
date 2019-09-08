@@ -50,7 +50,7 @@ export default {
           console.error(err);
           if (err.response && err.response.status === 401)
             this.$sendToastError('Please login to add an image');
-          else this.$sendToastError(err.response.data.errors[0].message);
+          else this.$sendToastError(err.response.data.message);
         });
     }
   }
