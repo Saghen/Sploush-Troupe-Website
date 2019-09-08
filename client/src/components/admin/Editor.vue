@@ -94,6 +94,7 @@ export default {
 
   .button {
     margin: auto;
+    margin-top: 32px;
   }
 }
 </style>
