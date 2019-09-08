@@ -2,8 +2,8 @@
   <div class="login">
     <div class="login-card">
       <h1>Login</h1>
-      <editor-input v-model="username" :options="{ nameReadable: 'Username'}"></editor-input>
-      <editor-input v-model="password" :options="{ nameReadable: 'Password', type: 'password' }"></editor-input>
+      <input placeholder="Username" type="type" v-model="username" />
+      <input placeholder="Password" type="password" v-model="password" />
       <span v-if="errorMessage" class="error-message">{{ errorMessage }}</span>
       <a @click.prevent="login" class="button">Login</a>
     </div>
@@ -11,14 +11,10 @@
 </template>
 
 <script>
-import EditorInput from "Components/admin/EditorInput";
 import config from "Config";
 
 export default {
   name: "login",
-  components: {
-    EditorInput
-  },
   data() {
     return {
       username: "",
@@ -85,7 +81,7 @@ export default {
 
   input {
     padding: 8px;
-    text-align: left;
+    text-align: left !important;
     width: 100%;
   }
 }
