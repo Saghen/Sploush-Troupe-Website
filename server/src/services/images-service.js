@@ -59,6 +59,14 @@ module.exports = class ImagesService {
     const files = await fs.readdir(config.get('images').path);
     return files;
   }
+
+  async delete({ filename }) {
+    BadRequest.assert(filename, 'A filename must be provided');
+    const imagePath = path.join(config.get('images').path, filename);
+    NotFound.assert(await pathExists(imagePath), 'Image not found');
+
+    await fs.rmdir(imagePath);
+  }
 };
 
 async function imageExists({ filename, optimizedOnly = false }) {
