@@ -33,6 +33,7 @@
       type="text"
       :value="value"
       @keypress="urlInput"
+      @input="emit"
     />
     <input
       v-if="!options.type || options.type === 'image'"
@@ -64,13 +65,10 @@ export default {
     },
     urlInput(e) {
       if (!/^[a-z-]*$/.test(e.key)) {
-        this.$toasted.error("URL only accepts lowercase letters and -", {
-          duration: 5000
-        });
+        this.$toasted.error("URL only accepts lowercase letters and -");
         e.preventDefault();
         return;
       }
-      this.emit(e);
     }
   }
 };

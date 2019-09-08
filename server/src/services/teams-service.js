@@ -46,6 +46,7 @@ module.exports = class TeamsService {
     }
 
     const team = await teamsClient.get({ id });
+    NotFound.assert(team, 'Team was not found');
 
     // TODO: Check if failed
 

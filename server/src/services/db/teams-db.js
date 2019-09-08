@@ -13,7 +13,7 @@ module.exports = class TeamDB {
   }
 
   async insert({ url, title, image, members, achievements }) {
-    if (await this.get({url})) throw new Error('Url already exists');
+    if (await this.get({ url })) throw new Error('Url already exists');
 
     const team = new Team(
       sanitize({ url, title, image, members, achievements })
@@ -25,6 +25,8 @@ module.exports = class TeamDB {
 
   async update(team, { url, title, image, members, achievements }) {
     const query = sanitize({ url, title, image, members, achievements });
+
+    console.log(query);
 
     team.title = query.title || team.title;
     team.url = query.url || team.url;
