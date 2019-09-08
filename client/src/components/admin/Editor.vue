@@ -25,19 +25,19 @@ export default {
     };
   },
   props: ["schema", "id"],
-  async beforeCreated() {
-    for (const param of this.schema.params) {
-      if (param.type === "array") this.values[param.name] = [];
-      else this.values[param.name] = "";
+  mounted() { this.getValues() },
+  watch: {
+    schema() {
+      this.getValues();
     }
   },
-  async created() {
-    if (this.id === undefined) return;
-    this.values = (await this.$http(
-      `${this.schema.endpoint}/get?id=${this.id}`
-    )).data;
-  },
   methods: {
+    async getValues() {
+      if (this.id === undefined) return;
+      this.values = (await this.$http(
+        `${this.schema.endpoint}/get?id=${this.id}`
+      )).data;
+    },
     async save() {
       try {
         if (this.id)
