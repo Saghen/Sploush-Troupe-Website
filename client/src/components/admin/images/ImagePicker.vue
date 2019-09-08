@@ -2,8 +2,9 @@
   <div id="picker">
     <a @click="refresh" class="button">Refresh</a>
     <div id="images">
-      <a v-for="(image, key) of activeImages" :key="key" @click="copyToClipboard(image)">
-        <image-component :image="image" size="512" height="200" />
+      <a v-for="(image, key) of activeImages" :key="key">
+        <font-awesome-icon class="delete" icon="trash" @click="() => deleteImage(image)" />
+        <image-component :image="image" size="512" height="200" @click="copyToClipboard(image)" />
       </a>
     </div>
     <pagination v-if="maxPage > 1" v-model="page" :maxPage="maxPage"></pagination>
@@ -13,11 +14,18 @@
 <script>
 import Pagination from "Components/Pagination";
 import ImageComponent from "Components/core/Image";
+// Icons
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faTrash);
 
 export default {
   components: {
     Pagination,
-    ImageComponent
+    ImageComponent,
+    FontAwesomeIcon
   },
   data() {
     return {
@@ -38,6 +46,12 @@ export default {
       document.execCommand("copy");
       document.body.removeChild(el);
       this.$sendToast("Copied to clipboard");
+    },
+    deleteImage(name) {
+      this.$http
+        .get(`/images/delete?filename=${name}`)
+        .then(() => this.$sendToast("Successfully deleted image"))
+        .catch(err => this.$sendToastError(err.response.data.message));
     }
   },
   computed: {
@@ -69,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/_global.scss";
+@import "@/styles/_globalAdmin.scss";
 
 #picker {
   display: flex;
@@ -90,13 +104,27 @@ export default {
   padding: 16px;
 
   > a {
+    position: relative;
     display: block;
     // margin: 16px 8px 0 8px;
     cursor: pointer;
 
+    > .delete {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      padding: 4px;
+      background: #000;
+    }
+
     > img {
       max-height: 200px;
       height: 100%;
+    }
+
+    &:hover > .delete {
+      display: block;
     }
   }
 }

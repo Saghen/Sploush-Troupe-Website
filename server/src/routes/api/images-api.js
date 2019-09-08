@@ -29,7 +29,7 @@ router.post('/insert', jwtMiddleware(), async ctx => {
   ctx.ok('Successfully uploaded image');
 });
 
-router.post('/delete', jwtMiddleware(), async ctx => {
+router.get('/delete', jwtMiddleware(), async ctx => {
   await imagesClient.delete(ctx.query);
   ctx.ok('Successfully deleted image');
 });

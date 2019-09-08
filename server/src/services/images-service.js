@@ -4,6 +4,7 @@ const config = require('Config');
 const fs = require('fs').promises;
 const pathExists = require('path-exists');
 const path = require('path');
+const rmfr = require('rmfr');
 
 const validExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
 
@@ -65,7 +66,7 @@ module.exports = class ImagesService {
     const imagePath = path.join(config.get('images').path, filename);
     NotFound.assert(await pathExists(imagePath), 'Image not found');
 
-    await fs.rmdir(imagePath);
+    await rmfr(imagePath);
   }
 };
 
