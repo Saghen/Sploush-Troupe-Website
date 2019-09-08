@@ -23,7 +23,7 @@ module.exports = class TeamDB {
     const query = sanitize(streamerData);
     streamer.name = query.name || streamer.name;
     streamer.description = query.description || streamer.description;
-    streamer.youtubeId = query.youtubeId || streamer.youtubeId;
+    streamer.youtubeUrl = query.youtubeUrl || streamer.youtubeUrl;
     streamer.twitterHandle = query.twitterHandle || streamer.twitterHandle;
     streamer.twitchId = query.twitchId || streamer.twitchId;
 

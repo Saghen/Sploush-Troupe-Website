@@ -14,7 +14,7 @@ const twitchClient = require('twitch').default.withClientCredentials(
 const StreamerSchema = new Schema({
   name: String,
   description: String,
-  youtubeId: {
+  youtubeUrl: {
     type: String,
     required: false
   },

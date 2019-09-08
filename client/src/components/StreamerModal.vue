@@ -13,7 +13,7 @@
       <a :href="`//www.twitch.tv/${streamer.twitchId}`">
         <font-awesome-icon :icon="['fab', 'twitch']" size="4x"></font-awesome-icon>
       </a>
-      <a v-if="streamer.youtubeId" :href="`//www.youtube.com/channel/${streamer.youtubeId}`">
+      <a v-if="streamer.youtubeId" :href="streamer.youtubeUrl">
         <font-awesome-icon :icon="['fab', 'youtube']" size="4x"></font-awesome-icon>
       </a>
       <a v-if="streamer.twitterHandle" :href="`//twitter.com/${streamer.twitterHandle}`">

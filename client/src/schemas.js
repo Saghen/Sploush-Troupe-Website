@@ -56,28 +56,28 @@ export const ApplicationsSchema = {
 };
 
 export const StreamerSchema = {
-  endpoint: "/streamers",
-  params: [
-    {
-      name: "name",
-      large: true
-    },
-    {
-      name: "twitchId",
-      large: true
-    },
-    {
-      name: "description",
-      type: "editor"
-    },
-    {
-      name: "twitterHandle"
-    },
-    {
-      name: "youtubeId"
-    }
-  ]
-};
+         endpoint: "/streamers",
+         params: [
+           {
+             name: "name",
+             large: true
+           },
+           {
+             name: "twitchId",
+             large: true
+           },
+           {
+             name: "description",
+             type: "editor"
+           },
+           {
+             name: "twitterHandle"
+           },
+           {
+             name: "youtubeUrl"
+           }
+         ]
+       };
 
 export const TeamMemberSchema = {
   endpoint: "/teams/members",
