@@ -21,7 +21,6 @@ export default {
   display: flex;
   flex-direction: column;
   color: $text;
-  width: 100%;
 }
 
 .link,
