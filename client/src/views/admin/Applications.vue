@@ -60,6 +60,7 @@ export default {
   background: $dark;
   align-self: center;
   justify-content: space-around;
+  width: 100%;
   > a {
     width: 100%;
   }
