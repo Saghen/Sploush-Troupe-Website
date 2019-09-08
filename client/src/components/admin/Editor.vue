@@ -91,5 +91,9 @@ export default {
   > * + * {
     margin-top: 32px;
   }
+
+  .button {
+    margin: auto;
+  }
 }
 </style>
