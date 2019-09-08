@@ -2,10 +2,12 @@
   <div id="picker">
     <a @click="refresh" class="button">Refresh</a>
     <div id="images">
-      <a v-for="(image, key) of activeImages" :key="key">
+      <div v-for="(image, key) of activeImages" :key="key">
         <font-awesome-icon class="delete" icon="trash" @click="() => deleteImage(image)" />
-        <image-component :image="image" size="512" height="200" @click="copyToClipboard(image)" />
-      </a>
+        <a @click="copyToClipboard(image)">
+          <image-component :image="image" size="512" height="200" />
+        </a>
+      </div>
     </div>
     <pagination v-if="maxPage > 1" v-model="page" :maxPage="maxPage"></pagination>
   </div>
@@ -51,7 +53,7 @@ export default {
       this.$http
         .get(`/images/delete?filename=${name}`)
         .then(() => {
-          this.$sendToast("Successfully deleted image")
+          this.$sendToast("Successfully deleted image");
           this.refresh();
         })
         .catch(err => this.$sendToastError(err.response.data.message));
@@ -106,7 +108,7 @@ export default {
   background: $dark;
   padding: 16px;
 
-  > a {
+  > div {
     position: relative;
     display: block;
     // margin: 16px 8px 0 8px;
@@ -119,9 +121,10 @@ export default {
       right: 4px;
       padding: 4px;
       background: #000;
+      color: $background;
     }
 
-    > img {
+    > a > img {
       max-height: 200px;
       height: 100%;
     }
