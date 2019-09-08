@@ -16,6 +16,7 @@
       :class="{ large: options.large }"
       type="number"
       :value="value"
+      :placeholder="options.nameReadable"
       @input="emit"
     />
     <input

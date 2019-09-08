@@ -106,7 +106,7 @@ export const TeamAchievementSchema = {
     {
       name: "place",
       type: "number",
-      max: 3,
+      max: 16,
       min: 1
     }
   ]

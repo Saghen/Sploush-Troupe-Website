@@ -37,7 +37,7 @@ export default {
       return this.streamer.twitchProfile.type === "live";
     },
     imageUrl() {
-      if (!this.streamer.twitchProfile.thumbnail_url) return "offline.png";
+      if (!this.streamer.twitchProfile.thumbnail_url) return "offline.jpg";
       return this.streamer.twitchProfile.thumbnail_url.replace(
         "{width}x{height}",
         "400x280"
