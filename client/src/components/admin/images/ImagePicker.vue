@@ -50,7 +50,10 @@ export default {
     deleteImage(name) {
       this.$http
         .get(`/images/delete?filename=${name}`)
-        .then(() => this.$sendToast("Successfully deleted image"))
+        .then(() => {
+          this.$sendToast("Successfully deleted image")
+          this.refresh();
+        })
         .catch(err => this.$sendToastError(err.response.data.message));
     }
   },
