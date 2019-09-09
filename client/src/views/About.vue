@@ -40,6 +40,7 @@ export default {
 <style lang="scss">
 #about-container {
   max-width: 900px;
+  width: 100%;
   margin: auto;
 
   > * + * {
