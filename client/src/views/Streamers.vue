@@ -30,10 +30,11 @@ export default {
   created() {
     this.$http
       .get("/streamers/list")
-      .then(data => (this.streamers = data.data));
+      .then(data => (this.streamers = data.data.sort(a => a.twitchProfile.type === 'live' ? -1 : 1)));
   },
   methods: {
     modalOpen(event) {
+      console.log(this.streamers);
       this.selectedStreamer = event.params.streamer;
     }
   }
