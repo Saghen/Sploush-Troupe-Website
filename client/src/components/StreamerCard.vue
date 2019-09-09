@@ -4,7 +4,7 @@
     class="streamer-card no-underline"
     :class="{ 'alt-color': altColor, offline: !isOnline }"
   >
-    <image-component :image="imageUrl" width="400" height="225" />
+    <image-component :image="imageUrl" width="100%" />
     <div class="title-container">
       <h3 class="title">{{ streamer.name }}</h3>
       <span class="streamer-status" :class="{ online: isOnline, offline: !isOnline }">
@@ -40,7 +40,7 @@ export default {
       if (!this.streamer.twitchProfile.thumbnail_url) return "offline.jpg";
       return this.streamer.twitchProfile.thumbnail_url.replace(
         "{width}x{height}",
-        "400x280"
+        "400x225"
       );
     }
   },
@@ -56,7 +56,8 @@ export default {
 @import "@/styles/_global.scss";
 
 .streamer-card {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   color: $accent;

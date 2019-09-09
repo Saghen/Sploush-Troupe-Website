@@ -1,8 +1,8 @@
 <template>
   <a :href="sponsor.url" class="sponsor-card no-underline" :class="{ 'alt-color': altColor }">
-    <image-component :image="sponsor.logoImage" size="512" width="500"></image-component>
+    <image-component :image="sponsor.logoImage" size="512" width="100%"></image-component>
     <div v-html="sponsor.content"></div>
-    <image-component :image="sponsor.image" size="512" width="500" height="280"></image-component>
+    <image-component :image="sponsor.image" size="512" width="100%"></image-component>
   </a>
 </template>
 
@@ -22,10 +22,11 @@ export default {
 @import "@/styles/_global.scss";
 
 .sponsor-card {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  color: $accent;
+  color: $text;
   text-decoration: none;
   border-bottom: 2px solid $accent;
   margin: 8px;
@@ -38,7 +39,6 @@ export default {
   }
 
   &:hover {
-    color: $accent-alt;
     border-bottom-color: $accent-alt;
   }
 }
@@ -51,10 +51,6 @@ export default {
     color: $accent;
     border-bottom-color: $accent;
   }
-}
-
-.content {
-  color: $text;
 }
 </style>
 
