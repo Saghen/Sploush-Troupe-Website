@@ -18,7 +18,7 @@
           <router-link to="/news">News</router-link>
           <router-link to="/teams">Teams</router-link>
           <router-link to="/streamers">Streamers</router-link>
-          <router-link to="/store">Store</router-link>
+          <router-link to="https://sectorsixapparel.com/collections/sploush-troupe">Store</router-link>
         </div>
         <div>
           <router-link to="/applications">Applications</router-link>
