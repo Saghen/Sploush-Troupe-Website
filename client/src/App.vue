@@ -11,6 +11,7 @@
 <style lang="scss">
 @import "@/styles/_normalize.scss";
 @import "@/styles/_global.scss";
+@import "@/styles/button.scss";
 
 @font-face {
   font-family: Bebas;

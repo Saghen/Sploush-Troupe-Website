@@ -7,23 +7,6 @@ $dark: #191727;
 $primary-font: Arial, Helvetica, sans-serif;
 $header-font: "Bebas", Impact, sans-serif;
 
-.button {
-  background-color: $accent-alt;
-  display: inline-block;
-  color: #fff;
-  padding: 15px 20px;
-  transition: all 0.3s;
-  border: 2px solid $accent-alt;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    background-color: transparent;
-    color: $accent-alt;
-  }
-}
-
 input {
   border: none;
   border-bottom: 1px solid #000;

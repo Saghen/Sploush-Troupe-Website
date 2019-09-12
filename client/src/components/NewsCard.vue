@@ -48,6 +48,7 @@ export default {
   &:hover {
     color: $accent-alt;
     border-bottom-color: $accent-alt;
+    transform: scale(1.05);
   }
 }
 

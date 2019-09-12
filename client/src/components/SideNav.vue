@@ -103,12 +103,17 @@ nav a {
   font-size: 1.3em;
   letter-spacing: 0.06em;
   text-decoration: none;
-  transition: 0.2s color;
+  transition: 0.2s all;
   display: flex;
   justify-content: center;
 
   &:hover {
     color: $accent;
+    transform: scale(1.1);
+  }
+
+  &::after {
+    content: none;
   }
 
   * + * {

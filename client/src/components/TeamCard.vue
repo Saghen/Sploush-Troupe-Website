@@ -1,7 +1,6 @@
 <template>
   <router-link class="no-underline" :to="/edit\?/.test(team.url) ? team.url : `/teams/${team.url}`">
     <image-component :image="team.image" size="512"></image-component>
-    <span>VIEW TEAM</span>
   </router-link>
 </template>
 
@@ -29,18 +28,18 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: $accent;
-  transition: 0.2s color;
+  color: $text;
+  transition: 0.2s all;
 
   &:hover {
-    color: $accent-alt;
+    color: $accent;
+    transform: scale(1.05);
   }
 }
 
 a > span {
   font-family: $header-font;
   letter-spacing: 0.06em;
-
   font-size: 1.2em;
   margin-top: 16px;
   text-decoration: underline;

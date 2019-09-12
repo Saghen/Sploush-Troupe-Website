@@ -1,7 +1,6 @@
 <template>
   <a :href="item.url" class="no-underline">
     <image-component :image="item.image" size="512"></image-component>
-    <span>BUY NOW</span>
   </a>
 </template>
 
@@ -27,22 +26,23 @@ img {
 a {
   display: block;
   position: relative;
-  color: $accent;
-  font-size: 2em;
+  color: $text;
+  font-size: 1.5em;
   font-family: $header-font;
   letter-spacing: 0.06em;
-  transition: 0.2s color;
+  transition: 0.2s all;
 
   &:hover {
-    color: $accent-alt;
+    color: $accent;
+    transform: scale(1.05);
   }
 }
 
 a > span {
   position: absolute;
   bottom: 20px;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   text-decoration: underline;
   text-align: center;
 }

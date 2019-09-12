@@ -40,6 +40,7 @@ export default {
 
   &:hover {
     border-bottom-color: $accent-alt;
+    transform: scale(1.05);
   }
 }
 
