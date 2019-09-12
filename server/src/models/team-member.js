@@ -4,7 +4,23 @@ const TeamMemberSchema = new Schema({
   gamerTag: String,
   name: String,
   image: String,
-  position: String
+  position: String,
+  youtubeUrl: {
+    type: String,
+    required: false
+  },
+  twitterHandle: {
+    type: String,
+    required: false
+  },
+  twitchId: {
+    type: String,
+    required: false
+  },
+  instagramUrl: {
+    type: String,
+    required: false
+  }
 });
 
 for (let attribute in TeamMemberSchema.paths) {

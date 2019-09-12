@@ -26,6 +26,7 @@ module.exports = class TeamDB {
     streamer.youtubeUrl = query.youtubeUrl || streamer.youtubeUrl;
     streamer.twitterHandle = query.twitterHandle || streamer.twitterHandle;
     streamer.twitchId = query.twitchId || streamer.twitchId;
+    streamer.instragram = query.instragram || streamer.instragram;
 
     return streamer.save();
   }

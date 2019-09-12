@@ -22,7 +22,11 @@ const StreamerSchema = new Schema({
     type: String,
     required: false
   },
-  twitchId: String
+  twitchId: String,
+  instagramUrl: {
+    type: String,
+    required: false
+  }
 });
 
 StreamerSchema.methods.getTwitchProfile = async function() {
