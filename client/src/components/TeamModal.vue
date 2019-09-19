@@ -3,7 +3,7 @@
     <container :header="member.name">
       <image-component :image="member.image" width="300px" />
       <container class="social-links" column="true" wrap="true">
-        <a :href="`//www.twitch.tv/${member.twitchId}`" class="no-underline">
+        <a v-if="member.twitchId" :href="`//www.twitch.tv/${member.twitchId}`" class="no-underline">
           <font-awesome-icon :icon="['fab', 'twitch']" size="4x"></font-awesome-icon>
         </a>
         <a v-if="member.youtubeId" :href="member.youtubeUrl" class="no-underline">
