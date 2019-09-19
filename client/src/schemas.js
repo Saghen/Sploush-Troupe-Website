@@ -98,8 +98,7 @@ export const TeamMemberSchema = {
       name: "position"
     },
     {
-      name: "twitchId",
-      large: true
+      name: "twitchId"
     },
     {
       name: "twitterHandle"
