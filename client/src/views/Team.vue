@@ -1,7 +1,7 @@
 <template>
   <container column="true" center="true" :header="team.title">
     <container wrap="true">
-      <div class="member" v-for="member of team.members" :key="member._id">
+      <div class="member" v-for="member of team.members" :key="member._id" @click="() => openModal(member)">
         <image-component :image="member.image" width="200" height="200" />
         <separator />
         <div class="member-primary">
@@ -20,6 +20,9 @@
         >{{ toPlace(achievement.place) }} PLACE</span>
       </h3>
     </div>
+    <modal name="team-member">
+      <team-modal :member="selectedMember"></team-modal>
+    </modal>
   </container>
 </template>
 
@@ -27,16 +30,19 @@
 import Container from "Components/core/Container";
 import ImageComponent from "Components/core/Image";
 import Separator from "Components/core/Separator";
+import TeamModal from "Components/TeamModal";
 
 export default {
   name: "team",
   components: {
     Container,
     ImageComponent,
-    Separator
+    Separator,
+    TeamModal
   },
   data() {
     return {
+      selectedMember: {},
       team: {
         title: "",
         members: [],
@@ -61,6 +67,12 @@ export default {
         default:
           return num + "th";
       }
+    },
+    openModal(member) {
+      console.log(member);
+      this.selectedMember = member;
+      console.log(this.selectedMember);
+      this.$modal.show("team-member");
     }
   }
 };
@@ -123,5 +135,23 @@ export default {
       color: #70351f;
     }
   }
+}
+
+.v--modal-background-click {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+}
+
+.v--modal {
+  border-radius: 0;
+  padding: 16px;
+  background: transparent;
+  top: 0 !important;
+  left: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none;
 }
 </style>

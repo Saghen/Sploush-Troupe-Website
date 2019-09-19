@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     modalOpen(event) {
-      console.log(this.streamers);
       this.selectedStreamer = event.params.streamer;
     }
   }

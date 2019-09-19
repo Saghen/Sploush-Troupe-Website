@@ -42,10 +42,7 @@ library.add(faTwitch, faYoutube, faTwitter);
 export default {
   name: "streamer-modal",
   props: ["streamer"],
-  components: { Container, Separator, FontAwesomeIcon },
-  created() {
-    console.log(this.streamer);
-  }
+  components: { Container, Separator, FontAwesomeIcon }
 };
 </script>
 
