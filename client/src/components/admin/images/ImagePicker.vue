@@ -122,6 +122,7 @@ export default {
       padding: 4px;
       background: #000;
       color: $background;
+      z-index: 100;
     }
 
     > a > img {
