@@ -11,7 +11,7 @@ router.get('/get', async ctx => {
 });
 
 router.get('/list', async ctx => {
-  ctx.ok(await newsClient.list());
+  ctx.ok(await newsClient.list().reverse());
 });
 
 router.post('/insert', jwtMiddleware(), async ctx => {
