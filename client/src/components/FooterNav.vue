@@ -10,8 +10,8 @@
       <router-link to="/streamers">
         <image-component image="footertwitch.png" size="256"></image-component>
       </router-link>
-      <a href="//twitter.com/SploushTroupe/">
-        <image-component image="footertwitter.png" size="256"></image-component>
+      <a href="//www.instagram.com/sploushtroupe/">
+        <image-component image="footerinstagram.png" size="256"></image-component>
       </a>
     </div>
   </footer>
@@ -56,5 +56,4 @@ footer {
     }
   }
 }
-
 </style>
