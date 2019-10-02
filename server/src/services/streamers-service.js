@@ -54,7 +54,7 @@ module.exports = class TeamsService {
     youtubeUrl,
     twitterHandle,
     twitchId,
-    instagramUrl
+    instagramHandle
   }) {
     BadRequest.assert(
       name && description && twitchId,
@@ -67,13 +67,13 @@ module.exports = class TeamsService {
       youtubeUrl,
       twitterHandle,
       twitchId,
-      instagramUrl
+      instagramHandle
     });
   }
 
   async update(
     id,
-    { name, description, youtubeUrl, twitterHandle, twitchId, instagramUrl }
+    { name, description, youtubeUrl, twitterHandle, twitchId, instagramHandle }
   ) {
     BadRequest.assert(id, 'An id must be provided');
     assertInvalidId(isObjectId(id));
@@ -84,8 +84,8 @@ module.exports = class TeamsService {
         youtubeUrl ||
         twitterHandle ||
         twitchId ||
-        instagramUrl,
-      'A name, description, twitchId, youtubeUrl, instagramUrl, or twitterHandle must be provided'
+        instagramHandle,
+      'A name, description, twitchId, youtubeUrl, instagramHandle, or twitterHandle must be provided'
     );
 
     const streamer = await streamersClient.get(id);
@@ -99,7 +99,7 @@ module.exports = class TeamsService {
       youtubeUrl,
       twitterHandle,
       twitchId,
-      instagramUrl
+      instagramHandle
     });
   }
 

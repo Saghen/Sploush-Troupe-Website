@@ -17,8 +17,8 @@
           <font-awesome-icon :icon="['fab', 'twitter']" size="4x"></font-awesome-icon>
         </a>
         <a
-          v-if="member.instagramUrl"
-          :href="`//www.instagram.com/${member.instagramUrl}`"
+          v-if="member.instagramHandle"
+          :href="`//www.instagram.com/${member.instagramHandle}`"
           class="no-underline"
         >
           <font-awesome-icon :icon="['fab', 'instagram']" size="4x"></font-awesome-icon>

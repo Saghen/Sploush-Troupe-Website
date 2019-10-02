@@ -23,7 +23,7 @@ const StreamerSchema = new Schema({
     required: false
   },
   twitchId: String,
-  instagramUrl: {
+  instagramHandle: {
     type: String,
     required: false
   }

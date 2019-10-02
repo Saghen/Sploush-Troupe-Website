@@ -77,7 +77,7 @@ export const StreamerSchema = {
       name: "youtubeUrl"
     },
     {
-      name: "instagramUrl"
+      name: "instagramHandle"
     }
   ]
 };
@@ -107,7 +107,7 @@ export const TeamMemberSchema = {
       name: "youtubeUrl"
     },
     {
-      name: "instagramUrl"
+      name: "instagramHandle"
     }
   ]
 };

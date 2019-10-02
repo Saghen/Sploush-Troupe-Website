@@ -17,7 +17,7 @@ const TeamMemberSchema = new Schema({
     type: String,
     required: false
   },
-  instagramUrl: {
+  instagramHandle: {
     type: String,
     required: false
   }
