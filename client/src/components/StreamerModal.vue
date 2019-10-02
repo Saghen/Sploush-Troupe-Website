@@ -19,6 +19,7 @@
       <a v-if="streamer.twitterHandle" :href="`//twitter.com/${streamer.twitterHandle}`">
         <font-awesome-icon :icon="['fab', 'twitter']" size="4x"></font-awesome-icon>
       </a>
+      <a v-if="streamer.instagramHandle" :href="`//www.instagram.com/${member.instagramHandle}`"><font-awesome-icon :icon="['fab', 'instagram']" size="4x"></font-awesome-icon></a>
     </container>
   </container>
 </template>
@@ -33,11 +34,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faTwitch,
   faYoutube,
-  faTwitter
+  faTwitter,
+  faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faTwitch, faYoutube, faTwitter);
+library.add(faTwitch, faYoutube, faTwitter, faInstagram);
 
 export default {
   name: "streamer-modal",
