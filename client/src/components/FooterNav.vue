@@ -7,9 +7,9 @@
       <a href="//sectorsixapparel.com/">
         <image-component image="footersponsor2.png" size="256"></image-component>
       </a>
-      <router-link to="/streamers">
-        <image-component image="footertwitch.png" size="256"></image-component>
-      </router-link>
+      <a href="//twitter.com/sploushtroupe">
+        <image-component image="footertwitter.png" size="256"></image-component>
+      </a>
       <a href="//www.instagram.com/sploushtroupe/">
         <image-component image="footerinstagram.png" size="256"></image-component>
       </a>

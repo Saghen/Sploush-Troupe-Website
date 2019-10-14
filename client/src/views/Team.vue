@@ -86,6 +86,12 @@ export default {
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
+  transition: 0.2s all;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
   > * + * {
     margin-top: 8px;
