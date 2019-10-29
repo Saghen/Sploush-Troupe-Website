@@ -2,7 +2,7 @@
   <div id="job-listing">
     <container :header="listing.name" column="true" center="true">
       <div v-html="listing.content"></div>
-      <router-link class="link no-underline" :to="listing.applyUrl">APPLY NOW</router-link>
+      <a class="link no-underline" :href="listing.applyUrl">APPLY NOW</a>
     </container>
   </div>
 </template>
