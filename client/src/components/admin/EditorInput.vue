@@ -65,7 +65,7 @@ export default {
       else this.$emit("input", e);
     },
     urlInput(e) {
-      if (!/^[a-z-]*$/.test(e.key)) {
+      if (!/^[a-z-0-9]*$/.test(e.key)) {
         this.$toasted.error("URL only accepts lowercase letters and -");
         e.preventDefault();
         return;
