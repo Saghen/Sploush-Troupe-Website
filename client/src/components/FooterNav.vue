@@ -1,16 +1,16 @@
 <template>
   <footer>
     <div id="footer">
-      <a href="//rogueenergy.com/">
+      <a href="//rogueenergy.com/" class="no-underline">
         <image-component image="footersponsor1.png" size="256"></image-component>
       </a>
-      <a href="//sectorsixapparel.com/">
+      <a href="//sectorsixapparel.com/" class="no-underline">
         <image-component image="footersponsor2.png" size="256"></image-component>
       </a>
-      <a href="//twitter.com/sploushtroupe">
+      <a href="//twitter.com/sploushtroupe" class="no-underline">
         <image-component image="footertwitter.png" size="256"></image-component>
       </a>
-      <a href="//www.instagram.com/sploushtroupe/">
+      <a href="//www.instagram.com/sploushtroupe/" class="no-underline">
         <image-component image="footerinstagram.png" size="256"></image-component>
       </a>
     </div>
@@ -40,6 +40,14 @@ footer {
   padding: 16px;
   display: flex;
   justify-content: space-around;
+
+  > a {
+    transition: 0.2s transform;
+  }
+
+  > a:hover {
+    transform: scale(1.05);
+  }
 
   > a img {
     height: 48px;
