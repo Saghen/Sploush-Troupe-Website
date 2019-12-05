@@ -22,7 +22,7 @@ module.exports = async function() {
       database: dbConfig.name,
       username: dbConfig.auth.enabled ? dbConfig.auth.username : undefined,
       password: dbConfig.auth.enabled ? dbConfig.auth.password : undefined,
-      hosts: [ {host: dbConfig.host, port: dbConfig.port }]
+      hosts: [{ host: dbConfig.host, port: dbConfig.port }]
     });
 
     db = await mongoose.connect(connectionString.toString(), {
