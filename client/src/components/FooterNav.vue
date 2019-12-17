@@ -43,6 +43,7 @@ footer {
 
   > a {
     transition: 0.2s transform;
+    will-change: transform;
   }
 
   > a:hover {

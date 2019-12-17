@@ -30,6 +30,7 @@ a {
   justify-content: center;
   color: $text;
   transition: 0.2s all;
+  will-change: transform;
 
   &:hover {
     color: $accent;

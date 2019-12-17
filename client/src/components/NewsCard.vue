@@ -36,6 +36,7 @@ export default {
   margin: 8px;
   padding-bottom: 6px;
   transition: 0.2s all;
+  will-change: transform;
 
   > * {
     margin: 6px 0;

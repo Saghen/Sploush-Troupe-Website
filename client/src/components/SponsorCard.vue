@@ -33,6 +33,7 @@ export default {
   padding-bottom: 6px;
   transition: 0.2s all;
   justify-content: space-between;
+  will-change: transform;
 
   > * {
     margin: 6px 0;

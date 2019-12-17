@@ -106,6 +106,7 @@ nav a {
   transition: 0.2s all;
   display: flex;
   justify-content: center;
+  will-change: transform;
 
   &:hover {
     color: $accent;

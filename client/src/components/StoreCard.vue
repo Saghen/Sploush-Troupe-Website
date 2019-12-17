@@ -31,6 +31,7 @@ a {
   font-family: $header-font;
   letter-spacing: 0.06em;
   transition: 0.2s all;
+  will-change: transform;
 
   &:hover {
     color: $accent;

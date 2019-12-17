@@ -67,6 +67,7 @@ export default {
   padding-bottom: 6px;
   transition: 0.2s all;
   cursor: pointer;
+  will-change: transform;
 
   > * {
     margin: 6px 0;

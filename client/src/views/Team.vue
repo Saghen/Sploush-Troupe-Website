@@ -87,6 +87,7 @@ export default {
   display: flex;
   flex-direction: column;
   transition: 0.2s all;
+  will-change: transform;
 
   &:hover {
     cursor: pointer;

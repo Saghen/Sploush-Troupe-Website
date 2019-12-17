@@ -93,6 +93,7 @@ export default {
     font-size: 2.5em;
     transition: 0.2s all;
     transform-origin: center;
+    will-change: transform;
 
     &:hover {
       transform: scale(1.05);
