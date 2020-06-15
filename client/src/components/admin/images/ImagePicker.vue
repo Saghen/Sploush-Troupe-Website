@@ -4,7 +4,7 @@
     <div id="images">
       <div v-for="(image, key) of activeImages" :key="key">
         <font-awesome-icon class="delete" icon="trash" @click="() => deleteImage(image)" />
-        <a @click="copyToClipboard(image)">
+        <a class="no-underline" @click="copyToClipboard(image)">
           <image-component :image="image" size="512" height="200" />
         </a>
       </div>
@@ -123,6 +123,14 @@ export default {
       background: #000;
       color: $background;
       z-index: 100;
+    }
+
+    > a {
+      transition: 0.2s transform;
+      &:hover {
+        transform: scale(1.05);
+        will-change: transform;
+      }
     }
 
     > a > img {
