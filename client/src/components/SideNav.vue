@@ -1,6 +1,20 @@
 <template>
   <nav>
-    <div>
+    <div class="social-links">
+      <a href="//twitter.com/sploushtroupe">
+        <image-component image="footertwitter.png" size="256"></image-component>
+      </a>
+      <a href="//www.instagram.com/sploushtroupe/" class="no-underline">
+        <image-component image="footerinstagram.png" size="256"></image-component>
+      </a>
+      <a href="//www.patreon.com/SploushTroupe" class="no-underline">
+        <img src="../assets/patreon-outline.png" >
+      </a>
+      <a href="//discord.gg/XFwAXZP" class="no-underline">
+        <img src="../assets/discord-outline.png" >
+      </a>
+    </div>
+    <div class="nav-links">
       <router-link to="/">
         <font-awesome-icon icon="home"></font-awesome-icon>
         <span>Home</span>
@@ -31,12 +45,17 @@
         <span>Sponsors</span>
       </router-link>
       <router-link to="/about">
-        <img src="../assets/about-us-icon.png" style="height: 24px"/>
+        <img src="../assets/about-us-icon.png" style="height: 24px" />
         <span>About Us</span>
       </router-link>
       <a href="https://sectorsixapparel.com/collections/sploush-troupe">
         <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
         <span>Store</span>
+      </a>
+    </div>
+    <div class="social-links" style="visibility: hidden;">
+      <a href="//twitter.com/sploushtroupe">
+        <image-component image="footertwitter.png" size="256"></image-component>
       </a>
     </div>
   </nav>
@@ -51,7 +70,7 @@ import {
   faUsers,
   faPaperPlane,
   faHandshake,
-  faShoppingCart
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -70,8 +89,8 @@ export default {
   name: "side-nav",
   components: {
     FontAwesomeIcon,
-    ImageComponent
-  }
+    ImageComponent,
+  },
 };
 </script>
 
@@ -80,15 +99,28 @@ export default {
 
 nav {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   background-color: $dark;
   border-left: 2px solid $accent;
   border-right: 2px solid $accent;
   height: 100vh;
 
-  > div {
+  > .social-links {
+    margin-bottom: 8px;
+    > * + * {
+      margin-top: 24px;
+    }
+    img {
+      width: 48px;
+      height: 100%;
+    }
+  }
+
+  > .nav-links {
     max-height: 500px;
     height: 100%;
-    margin: auto;
 
     display: flex;
     flex-direction: column;
