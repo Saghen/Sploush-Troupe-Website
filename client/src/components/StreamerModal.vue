@@ -1,7 +1,7 @@
 <template>
   <container class="streamer-modal" header="Streamer" column="true">
     <iframe
-      :src="`https://player.twitch.tv/?channel=${streamer.twitchId}`"
+      :src="`https://player.twitch.tv/?channel=${streamer.twitchId}&parent=sploushtroupe.com`"
       height="480"
       width="720"
       frameborder="0"
