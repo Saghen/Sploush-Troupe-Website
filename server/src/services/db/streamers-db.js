@@ -1,7 +1,7 @@
 const Streamer = require('Models/streamer');
 const sanitize = require('Helpers/sanitize');
 
-module.exports = class TeamDB {
+module.exports = class StreamersDB {
   async get(id) {
     const streamer = await Streamer.findById(id).exec();
     return streamer;

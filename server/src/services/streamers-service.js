@@ -6,7 +6,7 @@ const streamersClient = new StreamersDB();
 
 const assertInvalidId = BadRequest.makeAssert('Invalid id Provided');
 
-module.exports = class TeamsService {
+module.exports = class StreamersService {
   async get(id) {
     BadRequest.assert(id, 'An id must be provided');
     assertInvalidId(isObjectId(id));
