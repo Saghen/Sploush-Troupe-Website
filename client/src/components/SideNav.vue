@@ -114,6 +114,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    max-height: 300px;
 
     > * + * {
       margin-top: 4px;
