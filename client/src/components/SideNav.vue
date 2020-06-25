@@ -109,8 +109,14 @@ nav {
 
   > .social-links {
     margin-bottom: 8px;
+    margin-top: 8px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
     > * + * {
-      margin-top: 24px;
+      margin-top: 4px;
     }
     img {
       width: 48px;
